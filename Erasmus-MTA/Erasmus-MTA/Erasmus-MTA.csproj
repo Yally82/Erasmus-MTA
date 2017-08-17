@@ -179,8 +179,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-rtl.css" />
+    <Content Include="Content\bootstrap-rtl.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\docs.css" />
+    <Content Include="Content\jsgrid-theme.min.css" />
+    <Content Include="Content\jsgrid.min.css" />
+    <Content Include="Content\plugins\morris.css" />
+    <Content Include="Content\sb-admin-rtl.css" />
+    <Content Include="Content\sb-admin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -190,7 +198,36 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\custom.jstree.js" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.ttf" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.woff" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.eot" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.ttf" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.woff" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-regular-webfont.eot" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-regular-webfont.ttf" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-regular-webfont.woff" />
+    <Content Include="Scripts\custom.jsgrid.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\dist\jstree.js" />
+    <Content Include="Scripts\dist\jstree.min.js" />
+    <Content Include="Scripts\dist\libs\jquery.js" />
+    <Content Include="Scripts\dist\themes\default\30px.png" />
+    <Content Include="Scripts\dist\themes\default\32px.png" />
+    <Content Include="Scripts\dist\themes\default\40px.png" />
+    <Content Include="Scripts\dist\themes\default\style.css" />
+    <Content Include="Scripts\dist\themes\default\style.min.css" />
+    <Content Include="Scripts\dist\themes\default\throbber.gif" />
+    <Content Include="Scripts\dist\themes\proton\30px.png" />
+    <Content Include="Scripts\dist\themes\proton\32px.png" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.svg" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.svg" />
+    <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-regular-webfont.svg" />
+    <Content Include="Scripts\dist\themes\proton\style.css" />
+    <Content Include="Scripts\dist\themes\proton\style.min.css" />
+    <Content Include="Scripts\dist\themes\proton\throbber.gif" />
+    <Content Include="Scripts\html5.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -198,7 +235,18 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jsgrid.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugins\flot\excanvas.min.js" />
+    <Content Include="Scripts\plugins\flot\flot-data.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\plugins\morris\morris-data.js" />
+    <Content Include="Scripts\plugins\morris\morris.js" />
+    <Content Include="Scripts\plugins\morris\morris.min.js" />
+    <Content Include="Scripts\plugins\morris\raphael.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
