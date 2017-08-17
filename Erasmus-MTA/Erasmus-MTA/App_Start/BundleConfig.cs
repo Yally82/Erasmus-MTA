@@ -18,23 +18,16 @@ namespace Erasmus_MTA
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jsgrid").Include(
-                      "~/Content/jsgrid.min.js",
-                      "~/Scripts/custom.jsgrid.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jstree").Include(
                       "~/Scripts/dist/jstree.min.js",
                       "~/Scripts/custom.jstree.js"));
 
-            bundles.Add(new StyleBundle("~/Content/jsgrid").Include(
-                      "~/Content/jsgrid.min.css",
-                      "~/Content/jsgrid-theme.min.css"));
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
                       "~/Content/sb-admin.css",
-                      "~/Scripts/dist/themes/proton/style.css"));
+                      "~/Scripts/dist/themes/proton/style.css",
+                      "~/Content/jsgrid.min.css",
+                      "~/Content/jsgrid-theme.min.css"));
         }
     }
 }

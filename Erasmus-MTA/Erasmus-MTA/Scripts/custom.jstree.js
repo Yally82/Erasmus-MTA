@@ -16,56 +16,56 @@
                     }
                 }, {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 },
                 {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 },
                 {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 },
                 {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 },
                 {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Croatia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Grecia",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             },
             {
@@ -80,10 +80,10 @@
                     }
                 }, {
                     "text": "Veliko Tarnovo",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Pardubice",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             },
             {
@@ -98,10 +98,10 @@
                     }
                 }, {
                     "text": "Departamet2",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }, {
                     "text": "Departamet3",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             },
             {
@@ -116,7 +116,7 @@
                     }
                 }, {
                     "text": "Feminin",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             },
             {
@@ -131,7 +131,7 @@
                     }
                 }, {
                     "text": "Partener2",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             },
             {
@@ -146,7 +146,7 @@
                     }
                 }, {
                     "text": "Universitate civila",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             },
             {
@@ -161,7 +161,7 @@
                     }
                 }, {
                     "text": "Partener2",
-                    "icon": "./assets/images/tree_icon.png"
+                    "icon": "Content/images/tree_icon.png"
                 }]
             }
             ],
