@@ -14,38 +14,33 @@ namespace Erasmus_MTA
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-               name: "MobilitateINGetJSONid",
-               url: "MobilitateIN/Intern/GetJSON/{id}",
-               defaults: new { controller = "MobilitateIN", action = "getMobilitiesbyID" }
-            );
-            routes.MapRoute(
-              name: "MobilitateINGetJSON",
-              url: "MobilitateIN/Intern/GetJSON/{action}",
-              defaults: new { controller = "MobilitateIN", action = "getMobilitiebyTara" }
-           );
-
-            routes.MapRoute(
-                name: "MobilitateINSelect",
-                url: "MobilitateIN/Select/{type}",
-                defaults: new { controller = "MobilitateIN", action = "Index" }
+                name: "MobilitiesGETJSON",
+                url: "Mobilities/Intern/GETJSON",
+                defaults: new { controller = "Mobilities", action = "getSelectParameters" }
              );
 
             routes.MapRoute(
-             name: "PersonalGetJson",
-             url: "Personal/Intern/GetJSON/{id}",
-             defaults: new { controller = "Personal", action = "getPersonalbyID" }
+                name: "Mobilities",
+                url: "Mobilities",
+                defaults: new { controller = "Mobilities", action = "Index" }
+             );
+
+            routes.MapRoute(
+             name: "PersonGetJson",
+             url: "Person/Intern/GetJSON",
+             defaults: new { controller = "Person", action = "getPersonbyID" }
             );
 
             routes.MapRoute(
-             name: "Personal",
-             url: "Personal",
-             defaults: new { controller = "Personal", action = "Index" }
+             name: "Person",
+             url: "Person",
+             defaults: new { controller = "Person", action = "Index" }
           );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

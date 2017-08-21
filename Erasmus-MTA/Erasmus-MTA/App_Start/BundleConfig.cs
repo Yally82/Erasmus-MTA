@@ -19,8 +19,7 @@ namespace Erasmus_MTA
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jstree").Include(
-                      "~/Scripts/dist/jstree.min.js",
-                      "~/Scripts/custom.jstree.js"));
+                      "~/Scripts/dist/jstree.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

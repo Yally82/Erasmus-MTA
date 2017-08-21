@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Erasmus_MTA.Controllers
 {
-    public class MobilitateOUTController : Controller
+    public class StatisticsController : Controller
     {
-        // GET: MobilitateOUT
+        // GET: Statistics
         public ActionResult Index()
         {
             return View();

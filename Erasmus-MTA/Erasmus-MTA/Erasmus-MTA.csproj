@@ -150,9 +150,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MobilitateINController.cs" />
-    <Compile Include="Controllers\MobilitateOUTController.cs" />
-    <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\MobilitiesController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\TablesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,7 +269,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\custom.jsgrid.js" />
-    <Content Include="Scripts\custom.jstree.js" />
+    <Content Include="Scripts\jstree.tables.js" />
+    <Content Include="Scripts\jstree.mobilities.js" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.ttf" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.woff" />
@@ -376,10 +378,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\MobilitateIN\Index.cshtml" />
-    <Content Include="Views\MobilitateOUT\Index.cshtml" />
-    <Content Include="Views\Personal\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Tables\Index.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Mobilities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
