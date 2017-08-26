@@ -24,7 +24,8 @@ namespace Erasmus_MTA
                 url: "Mobilities",
                 defaults: new { controller = "Mobilities", action = "Index" }
              );
-
+            
+     
             routes.MapRoute(
              name: "PersonGetJson",
              url: "Person/Intern/GetJSON",

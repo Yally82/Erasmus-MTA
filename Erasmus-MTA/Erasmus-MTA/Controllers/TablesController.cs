@@ -11,6 +11,7 @@ namespace Erasmus_MTA.Controllers
         // GET: Tables
         public ActionResult Index()
         {
+            ViewBag.Type = "Orase";
             return View();
         }
     }

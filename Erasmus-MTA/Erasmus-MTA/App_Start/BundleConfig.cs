@@ -23,10 +23,12 @@ namespace Erasmus_MTA
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Scripts/bootstrap.mi.js",
                       "~/Content/sb-admin.css",
                       "~/Scripts/dist/themes/proton/style.css",
                       "~/Content/jsgrid.min.css",
                       "~/Content/jsgrid-theme.min.css"));
+                
         }
     }
 }

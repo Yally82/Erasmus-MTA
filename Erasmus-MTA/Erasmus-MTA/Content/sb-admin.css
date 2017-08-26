@@ -7,7 +7,8 @@
 /* Global Styles */
 
 body {
-    margin-top: 100px;
+
+
     background-color: #222;
 }
 
@@ -17,14 +18,15 @@ body {
     }
 }
 
-#wrapper {
-    padding-left: 0;
-}
+
 
 #page-wrapper {
     width: 100%;
-    padding: 0;
+    padding: 10px;
     background-color: #fff;
+    /*position:absolute;
+    top: 51px;*/
+ 
 }
 
 .huge {
@@ -36,7 +38,7 @@ body {
     #wrapper {
         padding-left: 225px;
     }
-
+   
     #page-wrapper {
         padding: 10px;
     }
@@ -126,6 +128,7 @@ ul.alert-dropdown {
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
+    
     }
 
     .side-nav>li>a {

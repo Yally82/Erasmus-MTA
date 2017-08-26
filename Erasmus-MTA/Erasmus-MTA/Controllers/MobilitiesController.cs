@@ -10,7 +10,7 @@ namespace Erasmus_MTA.Controllers
     enum MobilityType
     {
         incoming,
-        outgoing
+        outgoing,
     }
 
     public class MobilitiesController : Controller
