@@ -5,6 +5,7 @@ $("#backFromModalMobilitate").click(function () {
    $('#myModalMobilitate').hide();
 
 });
+
 //$(document).ready(function () {
 //    $("#jsGrids").jqGrid({
 //        width: "100%",

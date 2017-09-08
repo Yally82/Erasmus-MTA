@@ -1,117 +1,29 @@
 ﻿
-<!-- ROX: Trebuie lucrat la header. MObilitati IN, Mobilitati OUT, Vizualizare toate tabele, Statistici.
-    Hover peste MObilitati IN, Mobilitati OUT, cu vizualizare mobilitati si cu vizualizare participanti-->
-<!-- ROX: De luat jstree(htnml) de aici si pus in Mobilities/Index-->
-
-<!--ROX:IN header url trebuie sa fie astfel:
-    Mobilitati IN- localhost/Mobilities?type=IN
-    Mobilitati OUT- localhost/Mobilities?type=OUT
-    Person IN- localhost/Person?type=IN
-    Person OUT- localhost/Person?type=OUT
-    -->
-
-<!--Chestia ascunsa care nu se vede, si care ne usureaza de cod scris aproape la fel este contruirea dinamica a 
+<!--Robert:Chestia ascunsa care nu se vede, si care ne usureaza de cod scris aproape la fel este contruirea dinamica a 
     url care returneaza obiectul json; construire facuta cu ajutorul unui parametru din url. IN/OUT
     Acest  lucru trebuie implementat in scripturile json.mobilities.js si json.person.js-->
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="robots" content="index,follow" />
 
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" type="text/css" />
-    @*<script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>*@             @*cu el nu merge bine toggle pentru navigation bar din stanga in care se afla jstree*@
-    @*<script src="~/scripts/jquery-ui-1.10.4.min.js"></script>*@
-    <script src="~/scripts/i18n/grid.locale-en.js" type="text/javascript"></script>*
-    <script src="~/Scripts/jquery.jqGrid.min.js" type="text/javascript"></script>
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jstree")
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  @*este pentru pop-up....NU O MAI STERGEEEEEEEEE*@
-   
-    <script type="text/javascript" src="~/Scripts/jsgrid.min.js"></script>
-   
-</head>
-
+@Html.Partial("_Head");
 
 <body>
     <div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            </div>
+        @Html.Partial("_Navigation");
 
-
-
-
-            <!-- Top Menu Items -->
-
-            <ul class="nav collapse  navbar-collapse navbar-nav navbar-ex1-collapse">
-                <li class="active">@Html.ActionLink("Home page", "Login", "Home")</li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mobilitati incoming <span class="caret"></span></a>
-
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Vizualizare mobilitati", "Index", "Mobilities")</li>
-                        <li>@Html.ActionLink("Participanti", "Index", "Person")</li>
-                        
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="~/Views/Home/Login?id=0">Mobilitati outcoming <span class="caret"></span></a>
-
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Vizualizare mobilitati", "Index", "Mobilities")</li>
-                        <li>@Html.ActionLink("Participanti", "Index", "Person")</li>
-
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vizualizare date <span class="caret"></span></a>
-
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Tari", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Orase", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Institutie", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Institutii partenere", "Index", "Tables")</li>
-
-                        <li>@Html.ActionLink("Departamente", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Departamente partenere", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Personal ATM", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Participanti straini", "Index", "Tables")</li>
-                        <li>@Html.ActionLink("Detalii mobilitati", "Index", "Tables")</li>
-                    </ul>
-                 </li>
-                <li class="active">@Html.ActionLink("Statistici", "Index", "Statistics")</li>
-            </ul>
-
+        @*Rox: Aici div class="collapse navbar-collapse navbar-ex1-collapse nu mai este in nav. Trebuie modificat in css*@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
                         <a> <div id="jstree"></div></a>
                     </li>
-
                 </ul>
             </div>
 
-        </nav>
 
-         
-
-        <script src="~/ScripturiRox/jstree.mobilities.js" type="text/javascript"></script>
+        <script src="~/Scripts/jstree.mobilities.js" type="text/javascript"></script>
         @RenderBody()      
     </div>
 

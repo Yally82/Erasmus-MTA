@@ -1,16 +1,13 @@
 ﻿
 @{
-   
-    Layout = "~/Views/Shared/_LayoutNoTreeMenu.cshtml";
-
+    ViewBag.Title = "Mobilitati";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--Rox:Stanga jstree->dreapta jqgrid. Robert:JSTREE Evenimente + JQGRID Actualizare tabel obiecte JSON.-->
+<!--Robert:JSTREE Evenimente + JQGRID Actualizare tabel obiecte JSON.-->
 <!--Robert:Scriptul pt jstree este in Scripts/jstree.mobilties. Acesta va primi are un url care cere un obiect json, url creat cu ajutorul
     unui parametru din url paginii actuale, pentru a nu face 2 scripturi la fel, doar cu url diferite. Trebuie modificat in route-->
 <!--Robert: De lucrat la Scripts/jstree.mobilties si pus la url Mobilities/Intern/GETJSON -->
-
-
 
 
 <div id="page-wrapper">
@@ -190,4 +187,4 @@
         </div>
     </div>
 
-    <script src="~/ScripturiRox/jqgrid.mobilities.js" type="text/javascript"></script>
+    <script src="~/Scripts/jqgrid.mobilities.js" type="text/javascript"></script>

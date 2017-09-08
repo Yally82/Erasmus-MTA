@@ -15,10 +15,12 @@ namespace Erasmus_MTA.Controllers
         // GET: Personal
         public ActionResult Index()
         {
-            //    url parameter type IN/ OUT switch
-            //    Aici fac diferenta intre INCOMING/ OUTCOMING
-            //    type = 0 / 1
-            type = MobilityType.incoming;
+            string typeString = HttpContext.Request.Params.Get("type");
+            if (typeString == "Incoming")
+                type = MobilityType.Incoming;
+            else
+                if (typeString == "Outgoing")
+                type = MobilityType.Outgoing;
             return View();
         }
 

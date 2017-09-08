@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Erasmus_MTA.Models;
+using System.Diagnostics;
 
 namespace Erasmus_MTA.Controllers
 {
-    enum MobilityType
+    public enum MobilityType
     {
-        incoming,
-        outgoing,
+        Incoming,
+        Outgoing,
     }
 
     public class MobilitiesController : Controller
@@ -21,10 +22,16 @@ namespace Erasmus_MTA.Controllers
 
         public ActionResult Index()
         {
-            //    url parameter type IN/ OUT switch
-            //    Aici fac diferenta intre INCOMING/ OUTCOMING
-            //    type = 0 / 1
-            type = MobilityType.incoming;
+            string typeString = HttpContext.Request.Params.Get("type");
+            if (typeString == "Incoming")
+                type = MobilityType.Incoming;
+            else
+                if (typeString == "Outgoing")
+                    type = MobilityType.Outgoing;
+           // Debug.WriteLine(type.ToString());
+
+
+
             return View();
         }
 
