@@ -271,10 +271,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\custom.jsgrid.js" />
-    <Content Include="Scripts\jqgrid.mobilities.js" />
-    <Content Include="Scripts\jstree.tables.js" />
-    <Content Include="Scripts\jstree.mobilities.js" />
+    <Content Include="Scripts\mobilities.jsgrid.js" />
+    <Content Include="Scripts\tables.jstree.js" />
+    <Content Include="Scripts\mobilities.jstree.js" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.ttf" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.woff" />
