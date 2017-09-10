@@ -1,36 +1,10 @@
 ﻿
 switch ($("#tipTabel").text()) {
     case "Tari":
-    $("#jsGrids").jsGrid({
-        width: "100%",
-        height: "750px",
-
-        filtering: true,
-        inserting: true,
-        selecting: true,
-        editing: true,
-        sorting: true,
-        paging: true,
-        pageSize: 15,
-
-
-        deleteConfirm: "Do you really want to delete the client?",
-        //data: clients,
-
-        fields: [
-            { name: "ID", type: "number", width: 70, validate: "required" },
-            { name: "Nume", type: "text", width: 70, validate: "required" },
-            { name: "Nume romana", type: "text", width: 70, validate: "required" },
-            { name: "Nume Engleza", type: "text", width: 70, validate: "required" }
-        ]
-    });
-
-    break;
-
-    case "Orase":
-        $("#jsGrids").jsGrid({
+        $("#jsGrid").jsGrid({
             width: "100%",
             height: "750px",
+
             filtering: true,
             inserting: true,
             selecting: true,
@@ -38,21 +12,36 @@ switch ($("#tipTabel").text()) {
             sorting: true,
             paging: true,
             pageSize: 15,
-
+            autoload: true,
 
             deleteConfirm: "Do you really want to delete the client?",
-            //data: clients,
+
+            controller: {
+                loadData: function () {
+                    var d = $.Deferred();
+
+                    $.ajax({
+                        type: "GET",
+                        url: "Tables/Intern/getjson/Tara",
+                        dataType: "json"
+                    }).done(function (response) {
+                        d.resolve(response.value);
+                    });
+
+                    return d.promise();
+                }
+            },
 
             fields: [
-               { name: "ID", type: "number", width: 70, validate: "required" },
-            { name: "Nume", type: "text", width: 70, validate: "required" },
-            { name: "Nume romana", type: "text", width: 70, validate: "required" },
-            { name: "Nume Engleza", type: "text", width: 70, validate: "required" },
-            { name: "Tara", type: "text", width: 150, validate: "required" }
-
+                { name: "ID", type: "number", width: 70, validate: "required" },
+                { name: "Nume", type: "text", width: 70, validate: "required" },
+                { name: "Nume romana", type: "text", width: 70, validate: "required" },
+                { name: "Nume Engleza", type: "text", width: 70, validate: "required" }
             ]
         });
-        break;
+
+    break;
+
     case "Institutii":
         $("#jsGrids").jsGrid({
             width: "100%",

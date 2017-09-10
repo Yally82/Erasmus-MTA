@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/_LayoutNoTreeMenu.cshtml";
 }
 
-<!--Rox:JSTREE cu toate tabelele+Popupuri/direct in pagina editare tabele JQGRID-->
 <div id="page-wrapper">
-    <h1 id="tipTabel">Detalii mobilitati</h1>             @*In locul cuvantului "Orase" trebuie luat din link valoarea titlului sau sa fie trimis prin parametru tipul tabelului.*@
+    <h1 id="tipTabel">@ViewBag.Table</h1>           
     <div id="jsGrids"></div>
 </div>
     <script type="text/javascript" src="~/Scripts/tables.jstree.js"> </script>

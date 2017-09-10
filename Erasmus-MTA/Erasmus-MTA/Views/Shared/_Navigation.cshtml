@@ -25,7 +25,7 @@
                            "Mobilities",
                            new
                            {
-                               type = Erasmus_MTA.Controllers.MobilityType.Incoming
+                               type = Erasmus_MTA.Utilities.MobilityType.Incoming
                            },
                            null)
                 </li>
@@ -36,7 +36,7 @@
                             "Person",
                             new
                             {
-                                type = Erasmus_MTA.Controllers.MobilityType.Incoming
+                                type =  Erasmus_MTA.Utilities.MobilityType.Incoming
                             },
                             null)
                 </li>
@@ -53,7 +53,7 @@
                            "Mobilities",
                            new
                            {
-                               type = Erasmus_MTA.Controllers.MobilityType.Outgoing
+                               type =  Erasmus_MTA.Utilities.MobilityType.Outgoing
                            },
                            null)
                 </li>
@@ -64,7 +64,7 @@
                             "Person",
                             new
                             {
-                                type = Erasmus_MTA.Controllers.MobilityType.Outgoing
+                                type =  Erasmus_MTA.Utilities.MobilityType.Outgoing
                             },
                             null)
                 </li>
@@ -75,16 +75,105 @@
 
             <ul class="dropdown-menu">
                 @*din linkurile de mai jos trebuie afisat intr-un header titlul din ActionLink-ul corespunzator*@
-                <li>@Html.ActionLink("Tari", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Orase", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Institutie", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Institutii partenere", "Index", "Tables")</li>
-
-                <li>@Html.ActionLink("Departamente", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Departamente partenere", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Personal ATM", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Participanti straini", "Index", "Tables")</li>
-                <li>@Html.ActionLink("Detalii mobilitati", "Index", "Tables")</li>
+                <li>
+                    @Html.ActionLink(
+                            "Tari",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Tari"
+                            },
+                            null)
+               </li>
+                <li>
+                    @Html.ActionLink(
+                            "Orase",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Orase"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Institutie",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Institutie"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Institutii partenere",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Institutii partenere"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Departamente",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Departamente"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Departamente partenere",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Departamente partenere"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Personal ATM",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Personal ATM"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Participanti straini",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Participanti straini"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Detalii mobilitati",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "Detalii mobilitati"
+                            },
+                            null)
+                </li>
             </ul>
          </li>
         <li>@Html.ActionLink("Statistici", "Index", "Statistics")</li>

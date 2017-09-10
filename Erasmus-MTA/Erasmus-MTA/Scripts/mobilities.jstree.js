@@ -2,7 +2,7 @@
     $('#jstree').jstree({
         'core': {
             'data': {
-                "url": "Mobilities/Intern/GETJSON",
+                "url": "Mobilities/Intern/getjson",
                 "dataType": "json" // needed only if you do not supply JSON headers
             }
         }
