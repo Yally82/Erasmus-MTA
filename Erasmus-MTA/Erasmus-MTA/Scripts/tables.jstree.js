@@ -263,7 +263,7 @@ switch ($("#tipTabel").text()) {
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
-            autoload:true,
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -289,17 +289,17 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-            { name: "ID", type: "number", validate: "required" },
-            { name: "Nume", type: "text", validate: "required" },
-            { name: "Prenume", type: "text", validate: "required" },
-            { name: "Datanasterii", type: "text", validate: "required" },
-            { name: "Departament", type: "text", validate: "required" },
-            { name: "SituatieActuala", type: "text", validate: "required" },
-            { name: "SituatieErasmus", type: "text", validate: "required" },
-            { name: "Functie", type: "text", validate: "required" },
-            { name: "E-mail", type: "text", validate: "required" },
-            { name: "Telefon", type: "text", validate: "required" },
-            { name: "Descriere", type: "text", validate: "required" }
+                { name: "ID", type: "number", validate: "required" },
+                { name: "Nume", type: "text", validate: "required" },
+                { name: "Prenume", type: "text", validate: "required" },
+                { name: "Datanasterii", type: "text", validate: "required" },
+                { name: "Departament", type: "text", validate: "required" },
+                { name: "SituatieActuala", type: "text", validate: "required" },
+                { name: "SituatieErasmus", type: "text", validate: "required" },
+                { name: "Functie", type: "text", validate: "required" },
+                { name: "E-mail", type: "text", validate: "required" },
+                { name: "Telefon", type: "text", validate: "required" },
+                { name: "Descriere", type: "text", validate: "required" }
             ]
         });
 
@@ -407,6 +407,50 @@ switch ($("#tipTabel").text()) {
 
         break;
 
+    case "Participanti la mobilitati":
+        $("#jsGrids").jsGrid({
+            width: "100%",
+            height: "750px",
+
+            autoload: true,
+            filtering: true,
+            inserting: true,
+            selecting: true,
+            editing: true,
+            sorting: true,
+            paging: true,
+            pageSize: 15,
+
+
+            deleteConfirm: "Do you really want to delete the client?",
+            //data: clients,
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Person/Intern/getJson"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
+            fields: [
+                { name: "ID", type: "number", validate: "required" },
+                { name: "Nume", type: "text", validate: "required" },
+                { name: "Prenume", type: "text", validate: "required" },
+                { name: "Departament", type: "text", validate: "required" },
+                { name: "Situatieactuala", type: "text", validate: "required" },
+                { name: "SituatieErasmus", type: "text", validate: "required" },
+                { name: "Functie", type: "text", validate: "required" },
+                { name: "E-mail", type: "text", validate: "required" },
+                { name: "Telefon", type: "text", validate: "required" },
+                { name: "Descriere", type: "text", validate: "required" }
+            ]
+        });
+        break;
 
 default: break;
 }

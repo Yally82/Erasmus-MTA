@@ -25,32 +25,13 @@ namespace Erasmus_MTA.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public JsonResult getPersonalbyID()
-        //{
-        //    //returnare detalii mobilitate
-        //    var jsonData = new
-        //    {
-        //        total = 1,
-        //        page = 1,
-        //        records = database.Employees.ToList().Count,
-        //        rows = (
-        //          from emp in database.Employees.ToList()
-        //          select new
-        //          {
-        //              id = emp.id,
-        //              cell = new string[] {
-        //              emp.Name.ToString(),
-        //              emp.Designation.ToString(),
-        //              emp.Gender.ToString(),
-        //              emp.Salary.ToString(),
-        //              emp.City, emp.State,
-        //              emp.Zip.ToString()
-        //              }
-        //          }).ToArray()
-        //    };
-        //    return Json(jsonData, JsonRequestBehavior.AllowGet);
-        //}
-
+        //Robert: Get JSON Person. Completare: aici cu for..+Utilities/ToJSON+script cu campuri
+        [HttpGet]
+        public JsonResult getJsonPerson()
+        {
+            List<dynamic> jsonData = new List<dynamic>();
+           
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
     }
 }

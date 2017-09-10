@@ -39,26 +39,28 @@ namespace Erasmus_MTA
                defaults: new { controller = "Tables", action = "getJsonDepartamentePart" }
             );
             routes.MapRoute(
-              name: "TablesPersonal",
-              url: "Tables/Intern/getjson/Personal",
-              defaults: new { controller = "Tables", action = "getJsonPersonalATM" }
+                  name: "TablesPersonal",
+                  url: "Tables/Intern/getjson/Personal",
+                  defaults: new { controller = "Tables", action = "getJsonPersonalATM" }
            );
             routes.MapRoute(
-             name: "TablesParticipanti",
-             url: "Tables/Intern/getjson/Participanti",
-             defaults: new { controller = "Tables", action = "getJsonParticipantiStraini" }
+                 name: "TablesParticipanti",
+                 url: "Tables/Intern/getjson/Participanti",
+                 defaults: new { controller = "Tables", action = "getJsonParticipantiStraini" }
           );
             routes.MapRoute(
-            name: "TablesMobilitati",
-            url: "Tables/Intern/getjson/Mobilitati",
-            defaults: new { controller = "Tables", action = "getJsonDetaliiMobilitati" }
+                name: "TablesMobilitati",
+                url: "Tables/Intern/getjson/Mobilitati",
+                defaults: new { controller = "Tables", action = "getJsonDetaliiMobilitati" }
          );
             routes.MapRoute(
-          name: "TablesOrase",
-          url: "Tables/Intern/getjson/Orase",
-          defaults: new { controller = "Tables", action = "getJsonOrase" }
+              name: "TablesOrase",
+              url: "Tables/Intern/getjson/Orase",
+              defaults: new { controller = "Tables", action = "getJsonOrase" }
        );
 
+
+            /////////////////////////////////////////////////////////////////////////////////
             routes.MapRoute(
                 name: "MobilitiesGetJson",
                 url: "Mobilities/Intern/getjson",
@@ -67,10 +69,11 @@ namespace Erasmus_MTA
      
             routes.MapRoute(
              name: "PersonGetJson",
-             url: "Person/Intern/getjSON",
-             defaults: new { controller = "Person", action = "getPersonbyID" }
+             url: "Person/Intern/getJson",
+             defaults: new { controller = "Person", action = "getJsonPerson" }
             );
 
+            /////////////////////////////////////////////////////////////////////////////////
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
