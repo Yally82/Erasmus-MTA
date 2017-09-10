@@ -1,10 +1,11 @@
 ﻿
 switch ($("#tipTabel").text()) {
     case "Tari":
-        $("#jsGrid").jsGrid({
+        $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
 
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -12,40 +13,77 @@ switch ($("#tipTabel").text()) {
             sorting: true,
             paging: true,
             pageSize: 15,
-            autoload: true,
 
             deleteConfirm: "Do you really want to delete the client?",
-
+            
             controller: {
-                loadData: function () {
-                    var d = $.Deferred();
-
+                loadData: function (filter) {
+                    var data = $.Deferred();
                     $.ajax({
                         type: "GET",
-                        url: "Tables/Intern/getjson/Tara",
-                        dataType: "json"
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Tara"
                     }).done(function (response) {
-                        d.resolve(response.value);
+                        data.resolve(response);
                     });
-
-                    return d.promise();
+                    return data.promise();
                 }
             },
 
             fields: [
                 { name: "ID", type: "number", width: 70, validate: "required" },
                 { name: "Nume", type: "text", width: 70, validate: "required" },
-                { name: "Nume romana", type: "text", width: 70, validate: "required" },
-                { name: "Nume Engleza", type: "text", width: 70, validate: "required" }
+                { name: "NumeRomana", type: "text", width: 70, validate: "required" },
+                { name: "NumeEngleza", type: "text", width: 70, validate: "required" }
             ]
         });
 
     break;
-
-    case "Institutii":
+    case "Orase":
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
+
+            autoload: true,
+            filtering: true,
+            inserting: true,
+            selecting: true,
+            editing: true,
+            sorting: true,
+            paging: true,
+            pageSize: 15,
+
+            deleteConfirm: "Do you really want to delete the client?",
+
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Orase"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
+
+            fields: [
+                { name: "ID", type: "number", width: 70, validate: "required" },
+                { name: "Nume", type: "text", width: 70, validate: "required" },
+                { name: "NumeRomana", type: "text", width: 70, validate: "required" },
+                { name: "NumeEngleza", type: "text", width: 70, validate: "required" }
+            ]
+        });
+
+        break;
+    case "Institutie":
+        $("#jsGrids").jsGrid({
+            width: "100%",
+            height: "750px",
+
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -56,26 +94,42 @@ switch ($("#tipTabel").text()) {
 
 
             deleteConfirm: "Do you really want to delete the client?",
-            //data: clients,
+
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Institutii"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
 
             fields: [
             { name: "ID", type: "number",  validate: "required" },
             { name: "Nume", type: "text",  validate: "required" },
-            { name: "Nume Engleza", type: "text",  validate: "required" },
+            { name: "NumeEngleza", type: "text",  validate: "required" },
             { name: "Acronim", type: "text",  validate: "required" },
-            { name: "Adresa postala", type: "text",  validate: "required" },
-            { name: "Adresa web", type: "text", validate: "required" },
-            { name: "Cod Erasmus", type: "text", validate: "required" },
-            { name: "Cod PIC", type: "text", validate: "required" },
+            { name: "Adresapostala", type: "text",  validate: "required" },
+            { name: "Adresaweb", type: "text", validate: "required" },
+            { name: "CodErasmus", type: "text", validate: "required" },
+            { name: "CodPIC", type: "text", validate: "required" },
             { name: "Descriere", type: "text", validate: "required" }
             ]
         });
 
         break;
+
     case "Institutii partenere":
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
+
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -87,21 +141,33 @@ switch ($("#tipTabel").text()) {
 
             deleteConfirm: "Do you really want to delete the client?",
             //data: clients,
-
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/InstitutiiPart"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
             fields: [
             { name: "ID", type: "number", validate: "required" },
             { name: "Nume", type: "text", validate: "required" },
-            { name: "Nume Romana", type: "text", validate: "required" },
-            { name: "Nume Engleza", type: "text", validate: "required" },
+            { name: "NumeRomana", type: "text", validate: "required" },
+            { name: "NumeEngleza", type: "text", validate: "required" },
             { name: "Oras", type: "text", validate: "required" },
-            { name: "Tip partener", type: "text", validate: "required" },
+            { name: "Tippartener", type: "text", validate: "required" },
             { name: "Acronim", type: "text", validate: "required" },
-            { name: "Adresa postala", type: "text", validate: "required" },
-            { name: "Adresa web", type: "text", validate: "required" },
-            { name: "Cod Erasmus", type: "text", validate: "required" },
-            { name: "Cod PIC", type: "text", validate: "required" },
-            { name: "Carta Erasmus", type: "text", validate: "required" },
-            { name: "Acord Erasmus", type: "text", validate: "required" },
+            { name: "Adresapostala", type: "text", validate: "required" },
+            { name: "Adresaweb", type: "text", validate: "required" },
+            { name: "CodErasmus", type: "text", validate: "required" },
+            { name: "CodPIC", type: "text", validate: "required" },
+            { name: "CartaErasmus", type: "text", validate: "required" },
+            { name: "AcordErasmus", type: "text", validate: "required" },
             { name: "Descriere", type: "text", validate: "required" }
             ]
         });
@@ -111,6 +177,8 @@ switch ($("#tipTabel").text()) {
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
+
+            autoload:true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -122,15 +190,27 @@ switch ($("#tipTabel").text()) {
 
             deleteConfirm: "Do you really want to delete the client?",
             //data: clients,
-
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Departamente"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
             fields: [
             { name: "ID", type: "number", validate: "required" },
             { name: "Nume", type: "text", validate: "required" },  
-            { name: "Nume Engleza", type: "text", validate: "required" },
+            { name: "NumeEngleza", type: "text", validate: "required" },
             { name: "Institutie", type: "text", validate: "required" },
             { name: "Acronim", type: "text", validate: "required" },
-            { name: "Adresa postala", type: "text", validate: "required" },
-            { name: "Adresa web", type: "text", validate: "required" },
+            { name: "Adresapostala", type: "text", validate: "required" },
+            { name: "Adresaweb", type: "text", validate: "required" },
             { name: "Descriere", type: "text", validate: "required" }
             ]
         });
@@ -140,6 +220,7 @@ switch ($("#tipTabel").text()) {
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
+            autoload:true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -151,16 +232,28 @@ switch ($("#tipTabel").text()) {
 
             deleteConfirm: "Do you really want to delete the client?",
             //data: clients,
-
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/DepartamentePart"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
             fields: [
             { name: "ID", type: "number", validate: "required" },
             { name: "Nume", type: "text", validate: "required" },
-            { name: "Nume Romana", type: "text", validate: "required" },
-            { name: "Nume Engleza", type: "text", validate: "required" },
-            { name: "Institutie partenera", type: "text", validate: "required" },
+            { name: "NumeRomana", type: "text", validate: "required" },
+            { name: "NumeEngleza", type: "text", validate: "required" },
+            { name: "Institutiepartenera", type: "text", validate: "required" },
             { name: "Acronim", type: "text", validate: "required" },
-            { name: "Adresa postala", type: "text", validate: "required" },
-            { name: "Adresa web", type: "text", validate: "required" },
+            { name: "Adresapostala", type: "text", validate: "required" },
+            { name: "Adresaweb", type: "text", validate: "required" },
             { name: "Descriere", type: "text", validate: "required" }
             ]
         });
@@ -170,6 +263,7 @@ switch ($("#tipTabel").text()) {
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
+            autoload:true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -181,15 +275,27 @@ switch ($("#tipTabel").text()) {
 
             deleteConfirm: "Do you really want to delete the client?",
             //data: clients,
-
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Personal"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
             fields: [
             { name: "ID", type: "number", validate: "required" },
             { name: "Nume", type: "text", validate: "required" },
             { name: "Prenume", type: "text", validate: "required" },
-            { name: "Data nasterii", type: "text", validate: "required" },
+            { name: "Datanasterii", type: "text", validate: "required" },
             { name: "Departament", type: "text", validate: "required" },
-            { name: "Situatie actuala", type: "text", validate: "required" },
-            { name: "Situatie Erasmus", type: "text", validate: "required" },
+            { name: "SituatieActuala", type: "text", validate: "required" },
+            { name: "SituatieErasmus", type: "text", validate: "required" },
             { name: "Functie", type: "text", validate: "required" },
             { name: "E-mail", type: "text", validate: "required" },
             { name: "Telefon", type: "text", validate: "required" },
@@ -202,6 +308,8 @@ switch ($("#tipTabel").text()) {
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
+
+            autoload:true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -213,15 +321,26 @@ switch ($("#tipTabel").text()) {
 
             deleteConfirm: "Do you really want to delete the client?",
             //data: clients,
-
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Participanti"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
             fields: [
             { name: "ID", type: "number", validate: "required" },
             { name: "Nume", type: "text", validate: "required" },
             { name: "Prenume", type: "text", validate: "required" },
-            { name: "Data nasterii", type: "text", validate: "required" },
             { name: "Departament", type: "text", validate: "required" },
-            { name: "Situatie actuala", type: "text", validate: "required" },
-            { name: "Situatie Erasmus", type: "text", validate: "required" },
+            { name: "Situatieactuala", type: "text", validate: "required" },
+            { name: "SituatieErasmus", type: "text", validate: "required" },
             { name: "Functie", type: "text", validate: "required" },
             { name: "E-mail", type: "text", validate: "required" },
             { name: "Telefon", type: "text", validate: "required" },
@@ -230,64 +349,11 @@ switch ($("#tipTabel").text()) {
         });
         break;
     case "Detalii mobilitati":
-        var clients = [
-          { "ID": 0, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 1, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 2, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 3, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 4, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 5, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 6, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 7, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 8, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 9, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 10, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 11, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 12, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 13, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 14, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-          { "ID": 15, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-        ];
-        var mobilitati = [
-          { "ID": 0, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 1, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 2, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 3, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 4, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 5, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 6, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-          { "ID": 7, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-
-        ];
-        var tip = {
-            name: "Tip mobilitate",
-            type: "select",
-            items: [
-              { Name: "", Id: 0 },
-              { Name: "SMS", Id: 1 },
-              { Name: "SMP", Id: 2 },
-              { Name: "SM", Id: 3 },
-            ],
-            valueField: "Id",
-            textField: "Name"
-        }
-        var nivel = {
-            name: "Nivel",
-            type: "select",
-            items: [
-              { Name: "", Id: 0 },
-              { Name: "L", Id: 1 },
-              { Name: "M", Id: 2 },
-              { Name: "P", Id: 3 },
-            ],
-            valueField: "Id",
-            textField: "Name"
-        }
-
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
 
+            autoload:true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -298,14 +364,26 @@ switch ($("#tipTabel").text()) {
 
 
             deleteConfirm: "Do you really want to delete the client?",
-            data: clients,
+            controller: {
+                loadData: function (filter) {
+                    var data = $.Deferred();
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "/Tables/Intern/getjson/Mobilitati"
+                    }).done(function (response) {
+                        data.resolve(response);
+                    });
+                    return data.promise();
+                }
+            },
 
             fields: [
                 { name: "ID", type: "number", width: 70, validate: "required" },
                 { name: "An", type: "number", width: 70, validate: "required" },
-                { name: "Tip mobilitate", type: "select", items: tip, valueField: "Id", textField: "Name" },
+                { name: "Tipmobilitate", type: "select", items: tip, valueField: "Id", textField: "Name" },
                 { name: "Nivel", type: "select", items: nivel, valueField: "Id", textField: "Name" },
-                { name: "Nume si prenume", type: "text", width: 150, validate: "required" },
+                { name: "Numesiprenume", type: "text", width: 150, validate: "required" },
                 {
                     type: "control", width: 150,
                     itemTemplate: function (value, item) {
