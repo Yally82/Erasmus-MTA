@@ -30,9 +30,37 @@ namespace Erasmus_MTA.Controllers
         }
 
         [HttpGet]
+        public JsonResult getStudentMobilities()
+        {
+            List<JstreeObject> jsonData = new List<JstreeObject>();
+
+            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+            {
+                if(x.PersonalATM.SituatieActuala1.Denumire=="Student"||
+                    x.PersonalATM.SituatieActuala1.Denumire == "Absolvent")
+                    jsonData.Add(x.ToJSON());
+            }
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult getPersonalATMMobilities()
+        {
+            List<JstreeObject> jsonData = new List<JstreeObject>();
+
+            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+            {
+                if (x.PersonalATM.SituatieActuala1.Denumire == "Personal"||
+                    x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal")
+                    jsonData.Add(x.ToJSON());
+            }
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult getSelectParameters()
         {
-            JstreeObject jsonData = new JstreeObject("Types");
+
+            List<JstreeObject> jsonData = new List<JstreeObject>();
 
             JstreeObject tari = new JstreeObject("Tara");
             JstreeObject departamente = new JstreeObject("Departament");
@@ -41,12 +69,12 @@ namespace Erasmus_MTA.Controllers
             JstreeObject tipPartener = new JstreeObject("Tip Partener");
             JstreeObject niveleMobilitate = new JstreeObject("Nivel Mobilitate");
 
-            jsonData.children.Add(tari);
-            jsonData.children.Add(orase);
-            jsonData.children.Add(departamente);
-            jsonData.children.Add(parteneri);
-            jsonData.children.Add(tipPartener);
-            jsonData.children.Add(niveleMobilitate);
+            jsonData.Add(tari);
+            jsonData.Add(orase);
+            jsonData.Add(departamente);
+            jsonData.Add(parteneri);
+            jsonData.Add(tipPartener);
+            jsonData.Add(niveleMobilitate);
 
 
             foreach (Tara tara in database.Tara)

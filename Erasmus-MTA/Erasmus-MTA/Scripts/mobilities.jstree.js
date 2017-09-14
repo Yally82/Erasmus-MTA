@@ -1,11 +1,19 @@
 ﻿$(function () {
     $('#jstree').jstree({
+        'plugins': ["wholerow", "checkbox"],
         'core': {
             'data': {
                 "url": "/Mobilities/Intern/getjson",
-                "dataType": "json" // needed only if you do not supply JSON headers
+                "dataType": "json",
+                "type": "GET",
+                "contentType": "application/json"
             }
-        }
+        },
+        'themes': {
+                'name': 'proton',
+                'responsive': true,
+                'icons': false
+            }
     });
 });
 

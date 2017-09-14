@@ -10,14 +10,29 @@ namespace Erasmus_MTA.Utilities
 {
     public static class JsonExtentionMethods
     {
-        public static dynamic ToJSON(this Tara tara)
+        public static dynamic ToJSON(this MobilitateOutgoing x)
+        {
+            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
+            string Numesiprenume = x.PersonalATM.Nume + x.PersonalATM.Prenume;
+            string Tipmobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
+            return new
+            {
+                x.ID,
+                x.DataInceputMobilitate.Year,
+                Tipmobilitate,
+                x.Mobilitate.NivelStudii.Nivel,
+                Numesiprenume,
+            };
+        }
+
+        public static dynamic ToJSON(this Tara x)
         {
             return new
             {
-                tara.ID,
-                tara.Nume,
-                tara.NumeRomana,
-                tara.NumeEngleza
+                x.ID,
+                x.Nume,
+                x.NumeRomana,
+                x.NumeEngleza
             };
         }
         public static dynamic ToJSON(this Oras x)
