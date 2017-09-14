@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "Mobilitati";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Robert:JSTREE Evenimente + JQGRID Actualizare tabel obiecte JSON.-->
+<!--Robert:Scriptul pt jstree este in Scripts/jstree.mobilties. Acesta va primi are un url care cere un obiect json, url creat cu ajutorul
+    unui parametru din url paginii actuale, pentru a nu face 2 scripturi la fel, doar cu url diferite. Trebuie modificat in route-->
+<!--Robert: De lucrat la Scripts/jstree.mobilties si pus la url Mobilities/Intern/GETJSON -->
+
+
+<div id="page-wrapper">
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <p style="padding-left: 20%; padding-right: 20%; padding-top:25px;">
+                <button type="button" class="btn btn-lg btn-success">SMS: 6</button>
+                <button type="button" class="btn btn-lg btn-primary">SMP: 25</button>
+                <button type="button" class="btn btn-lg btn-danger">SM: 31</button>
+                <button type="button" class="btn btn-lg btn-success">STA: 2</button>
+                <button type="button" class="btn btn-lg btn-warning">STT: 3</button>
+                <button type="button" class="btn btn-lg btn-danger">ST: 5</button>
+                <button type="button" class="btn btn-lg btn-primary">SOM: 6</button>
+                <button type="button" class="btn btn-lg btn-danger">MOB: 42</button>
+
+
+            </p>
+            <div class="row">
+
+                <div class="col-lg-5">
+                    <h2>Studenti</h2>
+                    <div id="jsGrids"></div>
+                </div>
+                <div class="col-lg-2"> </div>
+                <div class="col-lg-5">
+                    <h2>Profesori</h2>
+                    <div id="jsGridp"></div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+        <!--detailsmodal-->
+
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog" style="width:45%;">
+                <div class="modal-content" id="myModalParticipant">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Detalii particiant</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+
+                            <div class="col-lg-6"> <h4>Nume: </h4>Unc</div>
+                            <div class="col-lg-6"> <h4>Prenume: </h4>Roxana Larisa</div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-6"> <h4>Gen: </h4>F</div>
+                            <div class="col-lg-6"> <h4>Departament: </h4>E2</div>
+
+                        </div>
+
+                        <h4>Mobilitati</h4>
+                        <p>
+                            <button type="button" class="btn btn-lg btn-success">SMS: 6</button>
+                            <button type="button" class="btn btn-lg btn-primary">SMP: 25</button>
+                            <button type="button" class="btn btn-lg btn-danger">SM: 31</button>
+                            <button type="button" class="btn btn-lg btn-success">STA: 2</button>
+                            <button type="button" class="btn btn-lg btn-warning">STT: 3</button>
+                            <button type="button" class="btn btn-lg btn-danger">ST: 5</button>
+                            <button type="button" class="btn btn-lg btn-primary">SOM: 6</button>
+                            <button type="button" class="btn btn-lg btn-danger">MOB: 42</button>
+
+
+
+                        </p>
+                        <div id="jsGridm"></div>
+
+
+                    </div>
+
+
+
+                </div>
+                <!--MobilitateModal-->>
+
+                <div class="modal-content" id="myModalMobilitate">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Detalii mobilitate</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-3" for="email">Nume:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="Unc">
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <label class="control-label col-sm-2" for="email">Prenume:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="Roxana Larisa" name="pwd">
+                                </div>
+
+
+                                <label class="control-label col-sm-3" for="email">Institutia gazda:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="Univ Bilbao" name="pwd">
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <label class="control-label col-sm-2" for="email">An mobilitate:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="2016" name="pwd">
+                                </div>
+
+
+
+                                <label class="control-label col-sm-3" for="email">Tip mobilitate:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="SMP">
+                                </div>
+                                <label class="control-label col-sm-3" for="email">Nivel mobilitate:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="M" name="pwd">
+                                </div>
+
+
+
+
+                                <label class="control-label col-sm-3" for="email">Data inceput:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="01.09.2016" name="pwd">
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <label class="control-label col-sm-2" for="email">Data final:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="01.12.2016" name="pwd">
+                                </div>
+
+                                <label class="control-label col-sm-3" for="email">Numar zile mobilitate:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="92" name="pwd">
+                                </div>
+                                <label class="control-label col-sm-3" for="email">Numar luni mobilitate:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="3.066" name="pwd">
+                                </div>
+
+
+                                <label class="control-label col-sm-3" for="email">Grant mobilitate:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" value="2100 euro" name="pwd">
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <br>
+                                <br>
+
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-success">Salveaza modificarile</button>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-danger">Sterge modificarile</button>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                            </div>
+
+
+                        </form>
+
+
+                        <div class="modal-footer">
+                            <button type="button" id="backFromModalMobilitate" class="btn btn-default">Inapoi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/mobilities.jsgrid.js" type="text/javascript"></script>
