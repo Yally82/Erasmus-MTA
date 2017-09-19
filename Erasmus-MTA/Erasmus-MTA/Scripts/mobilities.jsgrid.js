@@ -39,9 +39,9 @@ $("#jsGrids").jsGrid({
     fields: [
         { name: "ID", type: "number", width: 70, validate: "required" },
         { name: "Year", type: "number", width: 70, validate: "required" },
-        { name: "Tipmobilitate", type: "select" },
-        { name: "Nivel", type: "select",   textField: "Name" },
-        { name: "Numesiprenume", type: "text", width: 150, validate: "required" },
+        { name: "TipMobilitate", type: "text" },
+        { name: "Nivel", type: "text"},
+        { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
         {
             type: "control", width: 150,
             itemTemplate: function (value, item) {
@@ -95,8 +95,9 @@ $("#jsGridp").jsGrid({
     fields: [
         { name: "ID", type: "number", width: 70, validate: "required" },
         { name: "Year", type: "number", width: 70, validate: "required" },
-        { name: "TipMobilitate", type: "select" },
-        { name: "NumesiPrenume", type: "text", width: 150, validate: "required" },
+        { name: "TipMobilitate", type: "text" },
+        {name: "Nivel",type:",text", width: 70, validate: "required" },
+        { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
         {
             type: "control", width: 150,
             itemtemplate: function (value, item) {

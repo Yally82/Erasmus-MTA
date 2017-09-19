@@ -32,7 +32,7 @@ namespace Erasmus_MTA.Controllers
         [HttpGet]
         public JsonResult getStudentMobilities()
         {
-            List<JstreeObject> jsonData = new List<JstreeObject>();
+            List<dynamic> jsonData = new List<dynamic>();
 
             foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
             {
@@ -45,8 +45,7 @@ namespace Erasmus_MTA.Controllers
         [HttpGet]
         public JsonResult getPersonalATMMobilities()
         {
-            List<JstreeObject> jsonData = new List<JstreeObject>();
-
+            List<dynamic> jsonData = new List<dynamic>();
             foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
             {
                 if (x.PersonalATM.SituatieActuala1.Denumire == "Personal"||
@@ -65,7 +64,8 @@ namespace Erasmus_MTA.Controllers
             JstreeObject tari = new JstreeObject("Tara");
             JstreeObject departamente = new JstreeObject("Departament");
             JstreeObject orase = new JstreeObject("Oras");
-            JstreeObject parteneri = new JstreeObject("Partener");
+            JstreeObject parteneri = new JstreeObject("Parteneri");
+            JstreeObject nivelStudii = new JstreeObject("Nivel Studii");
             JstreeObject tipPartener = new JstreeObject("Tip Partener");
             JstreeObject niveleMobilitate = new JstreeObject("Nivel Mobilitate");
 
@@ -73,6 +73,7 @@ namespace Erasmus_MTA.Controllers
             jsonData.Add(orase);
             jsonData.Add(departamente);
             jsonData.Add(parteneri);
+            jsonData.Add(nivelStudii);
             jsonData.Add(tipPartener);
             jsonData.Add(niveleMobilitate);
 
@@ -99,7 +100,7 @@ namespace Erasmus_MTA.Controllers
             }
             foreach (NivelStudii niv in database.NivelStudii)
             {
-                parteneri.Add(new JstreeObject(niv.Nivel));
+                nivelStudii.Add(new JstreeObject(niv.Nivel));
             }
 
             return Json(jsonData, JsonRequestBehavior.AllowGet);

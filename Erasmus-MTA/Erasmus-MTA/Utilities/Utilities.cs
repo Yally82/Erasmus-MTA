@@ -15,6 +15,7 @@ namespace Erasmus_MTA.Utilities
     public class JstreeObject
     {
         public string text;
+        public string icon;
         public int id;
         public State state;
         public List<JstreeObject> children;
@@ -22,7 +23,7 @@ namespace Erasmus_MTA.Utilities
         public JstreeObject()
         {
             state = new State();
-            state.opened = true;
+            state.selected = false;
             children = new List<JstreeObject>();
         }
         public JstreeObject(string name)
@@ -30,8 +31,9 @@ namespace Erasmus_MTA.Utilities
         {
             text = name;
         }
-        public void Add(JstreeObject obj)
+        public void Add(JstreeObject obj/*,int parentId*/)
         {
+       
             children.Add(obj);
         }
     }
@@ -39,7 +41,7 @@ namespace Erasmus_MTA.Utilities
     {
         public bool selected;
         public bool opened;
-        public bool disabled;
+        //public bool disabled;
     }
 
 

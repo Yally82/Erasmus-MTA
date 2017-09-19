@@ -13,15 +13,15 @@ namespace Erasmus_MTA.Utilities
         public static dynamic ToJSON(this MobilitateOutgoing x)
         {
             //Posibilitatea schimbarii denumirilor pentru a fi compatibile
-            string Numesiprenume = x.PersonalATM.Nume + x.PersonalATM.Prenume;
-            string Tipmobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
+            string NumeSiPrenume = x.PersonalATM.Nume +" "+x.PersonalATM.Prenume;
+            string TipMobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
             return new
             {
                 x.ID,
                 x.DataInceputMobilitate.Year,
-                Tipmobilitate,
+                TipMobilitate,
                 x.Mobilitate.NivelStudii.Nivel,
-                Numesiprenume,
+                NumeSiPrenume,
             };
         }
 
@@ -45,7 +45,14 @@ namespace Erasmus_MTA.Utilities
                 x.NumeEngleza
             };
         }
-
+        public static dynamic ToJSON(this NivelStudii x)
+        {
+            return new
+            {
+                x.ID,
+                x.Nivel
+            };
+        }
         public static dynamic ToJSON(this Institutie inst)
         {
             return new
@@ -64,7 +71,7 @@ namespace Erasmus_MTA.Utilities
         public static dynamic ToJSON(this InstitutiiPartenere x)
         {
             string Oras = x.Oras1.Nume;
-            string Tippartener = x.TipPartener1.Denumire;
+            string TipPartener = x.TipPartener1.Denumire;
             return new
             {
                 x.ID,
@@ -72,7 +79,7 @@ namespace Erasmus_MTA.Utilities
                 x.NumeRomana,
                 x.NumeEngleza,
                 Oras,
-                Tippartener,
+                TipPartener,
                 x.Acronim,
                 x.AdresaPostala,
                 x.AdresaWeb,

@@ -360,16 +360,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jsgrid.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\plugins\flot\excanvas.min.js" />
-    <Content Include="Scripts\plugins\flot\flot-data.js" />
-    <Content Include="Scripts\plugins\flot\jquery.flot.js" />
-    <Content Include="Scripts\plugins\flot\jquery.flot.pie.js" />
-    <Content Include="Scripts\plugins\flot\jquery.flot.resize.js" />
-    <Content Include="Scripts\plugins\flot\jquery.flot.tooltip.min.js" />
-    <Content Include="Scripts\plugins\morris\morris-data.js" />
-    <Content Include="Scripts\plugins\morris\morris.js" />
-    <Content Include="Scripts\plugins\morris\morris.min.js" />
-    <Content Include="Scripts\plugins\morris\raphael.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />

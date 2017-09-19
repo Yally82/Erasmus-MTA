@@ -75,7 +75,7 @@ namespace Erasmus_MTA
             routes.MapRoute(
                 name: "MobilitiesGetJsonPersonalATM",
                 url: "Mobilities/Intern/getjson/PersonalATMMobilities",
-                defaults: new { controller = "Mobilities", action = "getStudentMobilities" }
+                defaults: new { controller = "Mobilities", action = "getPersonalATMMobilities" }
              );
 
             routes.MapRoute(

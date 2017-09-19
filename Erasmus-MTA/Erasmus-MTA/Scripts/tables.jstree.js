@@ -15,7 +15,7 @@ switch ($("#tipTabel").text()) {
             pageSize: 15,
 
             deleteConfirm: "Do you really want to delete the client?",
-            
+
             controller: {
                 loadData: function (filter) {
                     var data = $.Deferred();
@@ -31,14 +31,21 @@ switch ($("#tipTabel").text()) {
             },
 
             fields: [
-                { name: "ID", type: "number", width: 70, validate: "required" },
+                { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
                 { name: "Nume", type: "text", width: 70, validate: "required" },
                 { name: "NumeRomana", type: "text", width: 70, validate: "required" },
-                { name: "NumeEngleza", type: "text", width: 70, validate: "required" }
+                { name: "NumeEngleza", type: "text", width: 70, validate: "required" },
+                {
+                    type: "control", width: 50,
+                    itemTemplate: function (value, item) {
+                        var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                        return $result;
+                    }
+                }
             ]
         });
 
-    break;
+        break;
     case "Orase":
         $("#jsGrids").jsGrid({
             width: "100%",
@@ -70,10 +77,17 @@ switch ($("#tipTabel").text()) {
             },
 
             fields: [
-                { name: "ID", type: "number", width: 70, validate: "required" },
+                { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
                 { name: "Nume", type: "text", width: 70, validate: "required" },
                 { name: "NumeRomana", type: "text", width: 70, validate: "required" },
-                { name: "NumeEngleza", type: "text", width: 70, validate: "required" }
+                { name: "NumeEngleza", type: "text", width: 70, validate: "required" },
+                {
+                type: "control", width: 50,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                    return $result;
+                }
+                }
             ]
         });
 
@@ -110,15 +124,22 @@ switch ($("#tipTabel").text()) {
             },
 
             fields: [
-            { name: "ID", type: "number",  validate: "required" },
-            { name: "Nume", type: "text",  validate: "required" },
-            { name: "NumeEngleza", type: "text",  validate: "required" },
-            { name: "Acronim", type: "text",  validate: "required" },
-            { name: "Adresapostala", type: "text",  validate: "required" },
-            { name: "Adresaweb", type: "text", validate: "required" },
+            { name: "ID", type: "number", validate: "required", align: "center" },
+            { name: "Nume", type: "text", validate: "required" },
+            { name: "NumeEngleza", type: "text", validate: "required" },
+            { name: "Acronim", type: "text", validate: "required" },
+            { name: "AdresaPostala", type: "text", validate: "required" },
+            { name: "AdresaWeb", type: "text", validate: "required" },
             { name: "CodErasmus", type: "text", validate: "required" },
             { name: "CodPIC", type: "text", validate: "required" },
-            { name: "Descriere", type: "text", validate: "required" }
+            { name: "Descriere", type: "text", validate: "required" },
+            {
+                type: "control", width: 50,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                    return $result;
+                }
+            }
             ]
         });
 
@@ -155,20 +176,27 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-            { name: "ID", type: "number", validate: "required" },
+            { name: "ID", type: "number", validate: "required", align: "center" },
             { name: "Nume", type: "text", validate: "required" },
             { name: "NumeRomana", type: "text", validate: "required" },
             { name: "NumeEngleza", type: "text", validate: "required" },
             { name: "Oras", type: "text", validate: "required" },
-            { name: "Tippartener", type: "text", validate: "required" },
+            { name: "TipPartener", type: "text", validate: "required" },
             { name: "Acronim", type: "text", validate: "required" },
-            { name: "Adresapostala", type: "text", validate: "required" },
-            { name: "Adresaweb", type: "text", validate: "required" },
+            { name: "AdresaPostala", type: "text", validate: "required" },
+            { name: "AdresaWeb", type: "text", validate: "required" },
             { name: "CodErasmus", type: "text", validate: "required" },
             { name: "CodPIC", type: "text", validate: "required" },
             { name: "CartaErasmus", type: "text", validate: "required" },
             { name: "AcordErasmus", type: "text", validate: "required" },
-            { name: "Descriere", type: "text", validate: "required" }
+            { name: "Descriere", type: "text", validate: "required" },
+            {
+                type: "control", width: 50,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                    return $result;
+                }
+            }
             ]
         });
 
@@ -178,7 +206,7 @@ switch ($("#tipTabel").text()) {
             width: "100%",
             height: "750px",
 
-            autoload:true,
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -204,14 +232,21 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-            { name: "ID", type: "number", validate: "required" },
-            { name: "Nume", type: "text", validate: "required" },  
+            { name: "ID", type: "number", validate: "required", align: "center" },
+            { name: "Nume", type: "text", validate: "required" },
             { name: "NumeEngleza", type: "text", validate: "required" },
             { name: "Institutie", type: "text", validate: "required" },
             { name: "Acronim", type: "text", validate: "required" },
-            { name: "Adresapostala", type: "text", validate: "required" },
-            { name: "Adresaweb", type: "text", validate: "required" },
-            { name: "Descriere", type: "text", validate: "required" }
+            { name: "AdresaPostala", type: "text", validate: "required" },
+            { name: "AdresaWeb", type: "text", validate: "required" },
+            { name: "Descriere", type: "text", validate: "required" },
+            {
+                type: "control", width: 50,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                    return $result;
+                }
+            }
             ]
         });
 
@@ -220,7 +255,7 @@ switch ($("#tipTabel").text()) {
         $("#jsGrids").jsGrid({
             width: "100%",
             height: "750px",
-            autoload:true,
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -246,15 +281,22 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-            { name: "ID", type: "number", validate: "required" },
+            { name: "ID", type: "number", validate: "required", align: "center" },
             { name: "Nume", type: "text", validate: "required" },
             { name: "NumeRomana", type: "text", validate: "required" },
             { name: "NumeEngleza", type: "text", validate: "required" },
-            { name: "Institutiepartenera", type: "text", validate: "required" },
+            { name: "InstitutiePartenera", type: "text", validate: "required" },
             { name: "Acronim", type: "text", validate: "required" },
-            { name: "Adresapostala", type: "text", validate: "required" },
-            { name: "Adresaweb", type: "text", validate: "required" },
-            { name: "Descriere", type: "text", validate: "required" }
+            { name: "AdresaPostala", type: "text", validate: "required" },
+            { name: "AdresaWeb", type: "text", validate: "required" },
+            { name: "Descriere", type: "text", validate: "required" },
+            {
+                type: "control", width: 50,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                    return $result;
+                }
+            }
             ]
         });
 
@@ -289,17 +331,24 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-                { name: "ID", type: "number", validate: "required" },
+                { name: "ID", type: "number", validate: "required", align: "center" },
                 { name: "Nume", type: "text", validate: "required" },
                 { name: "Prenume", type: "text", validate: "required" },
-                { name: "Datanasterii", type: "text", validate: "required" },
+                { name: "DataNasterii", type: "text", validate: "required" },
                 { name: "Departament", type: "text", validate: "required" },
                 { name: "SituatieActuala", type: "text", validate: "required" },
                 { name: "SituatieErasmus", type: "text", validate: "required" },
                 { name: "Functie", type: "text", validate: "required" },
-                { name: "E-mail", type: "text", validate: "required" },
+                { name: "Email", type: "text", validate: "required", width: 150 },
                 { name: "Telefon", type: "text", validate: "required" },
-                { name: "Descriere", type: "text", validate: "required" }
+                { name: "Descriere", type: "text", validate: "required" },
+                {
+                    type: "control", width: 50,
+                    itemTemplate: function (value, item) {
+                        var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                        return $result;
+                    }
+                }
             ]
         });
 
@@ -309,7 +358,7 @@ switch ($("#tipTabel").text()) {
             width: "100%",
             height: "750px",
 
-            autoload:true,
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -335,16 +384,23 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-            { name: "ID", type: "number", validate: "required" },
+            { name: "ID", type: "number", validate: "required", width: 50, align: "center" },
             { name: "Nume", type: "text", validate: "required" },
             { name: "Prenume", type: "text", validate: "required" },
             { name: "Departament", type: "text", validate: "required" },
-            { name: "Situatieactuala", type: "text", validate: "required" },
+            { name: "SituatieActuala", type: "text", validate: "required" },
             { name: "SituatieErasmus", type: "text", validate: "required" },
             { name: "Functie", type: "text", validate: "required" },
-            { name: "E-mail", type: "text", validate: "required" },
+            { name: "Email", type: "text", validate: "required",width: 150 },
             { name: "Telefon", type: "text", validate: "required" },
-            { name: "Descriere", type: "text", validate: "required" }
+            { name: "Descriere", type: "text", validate: "required" },
+            {
+                type: "control", width: 50,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                    return $result;
+                }
+            }
             ]
         });
         break;
@@ -353,7 +409,7 @@ switch ($("#tipTabel").text()) {
             width: "100%",
             height: "750px",
 
-            autoload:true,
+            autoload: true,
             filtering: true,
             inserting: true,
             selecting: true,
@@ -379,27 +435,16 @@ switch ($("#tipTabel").text()) {
             },
 
             fields: [
-                { name: "ID", type: "number", width: 70, validate: "required" },
+                { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
                 { name: "An", type: "number", width: 70, validate: "required" },
                 { name: "Tipmobilitate", type: "select", items: tip, valueField: "Id", textField: "Name" },
                 { name: "Nivel", type: "select", items: nivel, valueField: "Id", textField: "Name" },
-                { name: "Numesiprenume", type: "text", width: 150, validate: "required" },
+                { name: "NumeSiPrenume", type: "text", width: 50, validate: "required" },
                 {
-                    type: "control", width: 150,
+                    type: "control", width: 50,
                     itemTemplate: function (value, item) {
                         var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-
-                        var $customButton = $("<button>")
-                            .text("Detalii")
-
-                            .click(function (e) {
-                                $('#myModalMobilitate').hide();
-                                $('#myModal').modal('show');
-                                $('#myModalParticipant').show();
-                                e.stopPropagation();
-                            });
-
-                        return $result.add($customButton);
+                        return $result;
                     }
                 }
             ]
@@ -438,19 +483,26 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-                { name: "ID", type: "number", validate: "required" },
+                { name: "ID", type: "number", validate: "required", align: "center", align: "center" },
                 { name: "Nume", type: "text", validate: "required" },
                 { name: "Prenume", type: "text", validate: "required" },
                 { name: "Departament", type: "text", validate: "required" },
-                { name: "Situatieactuala", type: "text", validate: "required" },
+                { name: "SituatieActuala", type: "text", validate: "required" },
                 { name: "SituatieErasmus", type: "text", validate: "required" },
                 { name: "Functie", type: "text", validate: "required" },
-                { name: "E-mail", type: "text", validate: "required" },
+                { name: "Email", type: "text", validate: "required", width: 150 },
                 { name: "Telefon", type: "text", validate: "required" },
-                { name: "Descriere", type: "text", validate: "required" }
+                { name: "Descriere", type: "text", validate: "required" },
+                {
+                    type: "control", width: 50,
+                    itemTemplate: function (value, item) {
+                        var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                        return $result;
+                    }
+                }
             ]
         });
         break;
 
-default: break;
+    default: break;
 }
