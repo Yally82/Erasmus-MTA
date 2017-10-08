@@ -16,17 +16,37 @@ switch ($("#tipTabel").text()) {
 
             deleteConfirm: "Do you really want to delete the client?",
 
+            reloadAfterSubmit:true,
+
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Tara"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/Tara",
+                        data: filter
                     });
-                    return data.promise();
+                }, 
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertTara",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateTara/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/Tara/" + item.ID
+                    });
                 }
             },
 
@@ -64,15 +84,33 @@ switch ($("#tipTabel").text()) {
 
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Orase"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/Oras",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertOras",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateOras/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/Oras/" + item.ID
+                    });
                 }
             },
 
@@ -111,15 +149,33 @@ switch ($("#tipTabel").text()) {
 
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Institutii"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/Institutie",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertInstitutie",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateInstitutie/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/Institutie/" + item.ID
+                    });
                 }
             },
 
@@ -164,15 +220,33 @@ switch ($("#tipTabel").text()) {
             //data: clients,
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/InstitutiiPart"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/InstitutiiPartenere",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertInstitutiiPartenere",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateInstitutiiPartenere/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/InstitutiiPartenere/" + item.ID
+                    });
                 }
             },
             fields: [
@@ -220,15 +294,33 @@ switch ($("#tipTabel").text()) {
             //data: clients,
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Departamente"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/DepartamenteATM",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertDepartamenteATM",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateDepartamenteATM/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/DepartamenteATM/" + item.ID
+                    });
                 }
             },
             fields: [
@@ -269,15 +361,33 @@ switch ($("#tipTabel").text()) {
             //data: clients,
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/DepartamentePart"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/DepartamentePartenere",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertDepartamentePartenere",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateDepartamentePartenere/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/DepartamentePartenere/" + item.ID
+                    });
                 }
             },
             fields: [
@@ -319,15 +429,33 @@ switch ($("#tipTabel").text()) {
             //data: clients,
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Personal"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/PersonalATM",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertPersonalATM",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updatePersonalATM/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/PersonalATM/" + item.ID
+                    });
                 }
             },
             fields: [
@@ -372,15 +500,33 @@ switch ($("#tipTabel").text()) {
             //data: clients,
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Participanti"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/ParticipantiStraini",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertParticipantiStraini",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateParticipantiStraini/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/ParticipantiStraini/" + item.ID
+                    });
                 }
             },
             fields: [
@@ -422,15 +568,33 @@ switch ($("#tipTabel").text()) {
             deleteConfirm: "Do you really want to delete the client?",
             controller: {
                 loadData: function (filter) {
-                    var data = $.Deferred();
-                    $.ajax({
+                    return $.ajax({
                         type: "GET",
-                        contentType: "application/json",
-                        url: "/Tables/Intern/getjson/Mobilitati"
-                    }).done(function (response) {
-                        data.resolve(response);
+                        url: "/Tables/getMedia/DetaliiMobilitatiProiect",
+                        data: filter
                     });
-                    return data.promise();
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/insertDetaliiMobilitatiProiect",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/updateDetaliiMobilitatiProiect/" + item.ID,
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Tables/deleteMedia/DetaliiMobilitatiProiect/" + item.ID
+                    });
                 }
             },
 
@@ -483,7 +647,7 @@ switch ($("#tipTabel").text()) {
                 }
             },
             fields: [
-                { name: "ID", type: "number", validate: "required", align: "center", align: "center" },
+                { name: "ID", type: "number", validate: "required", align: "center"},
                 { name: "Nume", type: "text", validate: "required" },
                 { name: "Prenume", type: "text", validate: "required" },
                 { name: "Departament", type: "text", validate: "required" },

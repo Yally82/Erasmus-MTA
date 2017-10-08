@@ -42,6 +42,7 @@ namespace Erasmus_MTA.Controllers
             }
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
         public JsonResult getPersonalATMMobilities()
         {
@@ -59,15 +60,15 @@ namespace Erasmus_MTA.Controllers
         public JsonResult getSelectParameters()
         {
 
-            List<JstreeObject> jsonData = new List<JstreeObject>();
+            List<JsonObject> jsonData = new List<JsonObject>();
 
-            JstreeObject tari = new JstreeObject("Tara");
-            JstreeObject departamente = new JstreeObject("Departament");
-            JstreeObject orase = new JstreeObject("Oras");
-            JstreeObject parteneri = new JstreeObject("Parteneri");
-            JstreeObject nivelStudii = new JstreeObject("Nivel Studii");
-            JstreeObject tipPartener = new JstreeObject("Tip Partener");
-            JstreeObject niveleMobilitate = new JstreeObject("Nivel Mobilitate");
+            JsonObject tari = new JsonObject("Tara");
+            JsonObject departamente = new JsonObject("Departament");
+            JsonObject orase = new JsonObject("Oras");
+            JsonObject parteneri = new JsonObject("Parteneri");
+            JsonObject nivelStudii = new JsonObject("Nivel Studii");
+            JsonObject tipPartener = new JsonObject("Tip Partener");
+            JsonObject niveleMobilitate = new JsonObject("Nivel Mobilitate");
 
             jsonData.Add(tari);
             jsonData.Add(orase);
@@ -80,27 +81,27 @@ namespace Erasmus_MTA.Controllers
 
             foreach (Tara tara in database.Tara)
             {
-                tari.Add(new JstreeObject(tara.NumeEngleza));
+                tari.Add(new JsonObject(tara.NumeEngleza));
             }
             foreach (DepartamenteATM dep in database.DepartamenteATM)
             {
-                departamente.Add(new JstreeObject(dep.Nume));
+                departamente.Add(new JsonObject(dep.Nume));
             }
             foreach(Oras oras in database.Oras)
             {
-                orase.Add(new JstreeObject(oras.Nume));
+                orase.Add(new JsonObject(oras.Nume));
             }
             foreach( TipPartener tip in database.TipPartener)
             {
-                tipPartener.Add(new JstreeObject(tip.Denumire));
+                tipPartener.Add(new JsonObject(tip.Denumire));
             }
            foreach( InstitutiiPartenere inst in database.InstitutiiPartenere)
             {
-                parteneri.Add(new JstreeObject(inst.Nume));
+                parteneri.Add(new JsonObject(inst.Nume));
             }
             foreach (NivelStudii niv in database.NivelStudii)
             {
-                nivelStudii.Add(new JstreeObject(niv.Nivel));
+                nivelStudii.Add(new JsonObject(niv.Nivel));
             }
 
             return Json(jsonData, JsonRequestBehavior.AllowGet);
