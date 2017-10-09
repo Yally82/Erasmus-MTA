@@ -62,6 +62,9 @@ $("#jsGrids").jsGrid({
         }
     ]
 });
+App = {};
+
+App.loadUrl = "/Mobilities/Intern/getjson/PersonalATMMobilities";
 
 $("#jsGridp").jsGrid({
     width: "100%",
@@ -83,7 +86,7 @@ $("#jsGridp").jsGrid({
             $.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "/Mobilities/Intern/getjson/PersonalATMMobilities"
+                url:App.loadUrl
             }).done(function (response) {
                 data.resolve(response);
             });
@@ -117,187 +120,82 @@ $("#jsGridp").jsGrid({
         }
     ]
 });
+ $('#jstree').on('changed.jstree', function (e, data) {
+        var i, j,r=[], tara = [],oras=[],departament=[],parteneri=[],nivelStudii=[],tipPartener=[],nivelMobilitate=[];
+        for (i = 0, j = data.selected.length; i < j; i++) {
+            r.push(data.instance.get_node(data.instance.get_parent(data.selected[i])).text);
+            switch(data.instance.get_node(data.instance.get_parent(data.selected[i])).text)
+            {
+                case "Tara":
+                    {
+                        tara.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                case "Oras":
+                    {
+                        oras.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                case "Parteneri":
+                    {
+                        parteneri.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                case "NivelStudii":
+                    {
+                        nivelStudii.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                case "TipPartener":
+                    {
+                        tipPartener.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                case "NivelMobilitate":
+                    {
+                        nivelMobilitate.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+        App.loadUrl = "/Mobilities/Intern/getjson/jstreeChecked"; 
+        if (tara.length > 0 || oras.length > 0 || departament.length > 0 || parteneri.length > 0 || nivelStudii.length > 0 || tipPartener.length > 0 || nivelMobilitate.le > 0) {
+            App.loadUrl = App.loadUrl.concat("?");
+            if (tara.length > 0) {
+                App.loadUrl = App.loadUrl.concat("tara=").concat(tara);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+            if (oras.length > 0) {
+                App.loadUrl = App.loadUrl.concat("&oras=").concat(oras);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+            if (departament.length > 0) {
+                App.loadUrl = App.loadUrl.concat("&departament=").concat(departament);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+            if (parteneri.length > 0) {
+                App.loadUrl = App.loadUrl.concat("&parteneri=").concat(parteneri);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+            if (nivelStudii.length > 0) {
+                App.loadUrl = App.loadUrl.concat("&nivelStudii=").concat(nivelStudii);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+            if (tipPartener.length > 0) {
+                App.loadUrl = App.loadUrl.concat("&tipPartener=").concat(tipPartener);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+            if (nivelMobilitate.length > 0) {
+                App.loadUrl = App.loadUrl.concat("&nivelMobilitate=").concat(nivelMobilitate);
+                App.loadUrl = App.loadUrl.concat("&");
+            }
+          
+            $("#jsGridp").jsGrid("loadData");
+        }
+    })
 
 
-
-//        var clients = [
-//            { "ID": 0, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 1, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 2, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 3, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 4, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 5, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 6, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 7, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 8, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 9, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 10, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 11, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 12, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 13, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 14, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//            { "ID": 15, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Nume si prenume": "Ionescu Alexandru Damian" },
-//        ];
-//var mobilitati = [
-//  { "ID": 0, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 1, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 2, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 3, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 4, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 5, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 6, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-//  { "ID": 7, "An": 2005, "Tip mobilitate": 1, "Nivel": 3, "Institutia gazda": "Univ Bilbao" },
-
-//];
-//var tip = {
-//    name: "Tip mobilitate",
-//    type: "select",
-//    items: [
-//      { Name: "", Id: 0 },
-//      { Name: "SMS", Id: 1 },
-//      { Name: "SMP", Id: 2 },
-//      { Name: "SM", Id: 3 },
-//    ],
-//    valueField: "Id",
-//    textField: "Name"
-//}
-//var nivel = {
-//    name: "Nivel",
-//    type: "select",
-//    items: [
-//      { Name: "", Id: 0 },
-//      { Name: "L", Id: 1 },
-//      { Name: "M", Id: 2 },
-//      { Name: "P", Id: 3 },
-//    ],
-//    valueField: "Id",
-//    textField: "Name"
-//}
-
-//$("#jsGrids").jsGrid({
-//    width: "100%",
-//    height: "750px",
-
-//    filtering: true,
-//    inserting: true,
-//    selecting: true,
-//    editing: true,
-//    sorting: true,
-//    paging: true,
-//    pageSize: 15,
-
-
-//    deleteConfirm: "Do you really want to delete the client?",
-//    data: clients,
-
-//    fields: [
-//        { name: "ID", type: "number", width: 70, validate: "required" },
-//        { name: "An", type: "number", width: 70, validate: "required" },
-//        { name: "Tip mobilitate", type: "select", items: tip, valueField: "Id", textField: "Name" },
-//        { name: "Nivel", type: "select", items: nivel, valueField: "Id", textField: "Name" },
-//        { name: "Nume si prenume", type: "texts", width: 150, validate: "required" },
-//        {
-//            type: "control", width: 150,
-//            itemTemplate: function (value, item) {
-//                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-
-//                var $customButton = $("<button>")
-//                    .text("Detalii")
-
-//                    .click(function (e) {
-//                        $('#myModalMobilitate').hide();
-//                        $('#myModal').modal('show');
-//                        $('#myModalParticipant').show();
-//                        e.stopPropagation();
-//                    });
-
-//                return $result.add($customButton);
-//            }
-//        }
-//    ]
-//});
-
-
-//$("#jsGridm").jsGrid({
-//    width: "100%",
-//    height: "400px",
-
-//    filtering: true,
-//    inserting: true,
-//    selecting: true,
-//    editing: true,
-//    sorting: true,
-//    paging: true,
-//    pageSize: 5,
-
-
-//    deleteConfirm: "Do you really want to delete the client?",
-//    data: mobilitati,
-
-//    fields: [
-//        { name: "ID", type: "number", width: 70, validate: "required" },
-//        { name: "An", type: "number", width: 70, validate: "required" },
-//        { name: "Tip mobilitate", type: "select", items: tip, valueField: "Id", textField: "Name" },
-//        { name: "Nivel", type: "select", items: nivel, valueField: "Id", textField: "Name" },
-//        { name: "Institutia gazda", type: "number", width: 150, validate: "required" },
-//        {
-//            type: "control", width: 150,
-//            itemTemplate: function (value, item) {
-//                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-
-//                var $customButton = $("<button>")
-//                    .text("Detalii")
-
-//                    .click(function (e) {
-//                        $('#myModalMobilitate').show();
-//                        $('#myModalParticipant').hide();
-
-//                        e.stopPropagation();
-//                    });
-
-//                return $result.add($customButton);
-//            }
-//        }
-//    ]
-//});
-
-//$("#jsGridp").jsGrid({
-//    width: "100%",
-//    height: "750px",
-//    filtering: true,
-//    inserting: true,
-//    editing: true,
-//    sorting: true,
-//    paging: true,
-//    pageSize: 15,
-
-
-//    deleteConfirm: "Do you really want to delete the client?",
-//    data: clients,
-
-
-//    fields: [
-//        { name: "ID", type: "number", width: 70, validate: "required" },
-//        { name: "An", type: "number", width: 70, validate: "required" },
-//        { name: "Tip mobilitate", type: "select", items: tip, valueField: "Id", textField: "Name" },
-
-//        { name: "Nume si prenume", type: "number", width: 150, validate: "required" },
-//        {
-//            type: "control", width: 150,
-//            itemTemplate: function (value, item) {
-//                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-
-//                var $customButton = $("<button>")
-//                    .text("Detalii")
-//                    .click(function (e) {
-//                        $('#myModal').modal('show');
-//                        $('#myModalMobilitate').hide();
-//                        $('#myModalParticipant').show();
-//                        e.stopPropagation();
-//                    });
-
-//                return $result.add($customButton);
-//            }
-//        }
-//    ]
-//});

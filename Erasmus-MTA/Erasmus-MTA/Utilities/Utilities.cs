@@ -41,7 +41,7 @@ namespace Erasmus_MTA.Utilities
     {
         public string text;
         public string icon;
-        public int id;
+        public string id;
         public State state;
         public List<JsonObject> children;
 
@@ -54,11 +54,12 @@ namespace Erasmus_MTA.Utilities
         public JsonObject(string name)
             : this()
         {
+            
             text = name;
         }
         public void Add(JsonObject obj/*,int parentId*/)
         {
-       
+
             children.Add(obj);
         }
     }
@@ -66,7 +67,6 @@ namespace Erasmus_MTA.Utilities
     {
         public bool selected;
         public bool opened;
-        //public bool disabled;
     }
 
 

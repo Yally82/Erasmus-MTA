@@ -56,6 +56,54 @@ namespace Erasmus_MTA.Controllers
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult jstreeChecked(string tara=null,string oras=null,string departament=null,string parteneri=null,string nivelStudii=null,string tipPartener=null,string nivelMobilitate=null)
+        {
+
+
+            List<dynamic> jsonData = new List<dynamic>();
+            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+            {
+           
+                if ((x.PersonalATM.SituatieActuala1.Denumire == "Personal" ||
+                    x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal"))
+                    {
+                    int sw = 0;
+                    if (tara!=null)
+                        if(tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza)==false)
+                        {
+                            sw=1;
+                            break;
+                        }
+                    if(oras!=null)
+                        if(oras.Contains(x.InstitutiiPartenere.Oras1.Nume)==false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+
+                    if (sw == 0)
+                        jsonData.Add(x.ToJSON());
+                }
+            
+                /*&&oras.Contains(x.InstitutiiPartenere.Oras1.NumeEngleza.ToString())&& departament.Contains(x.DepartamentATM.ToString())&&parteneri.Contains(x.InstitutiiPartenere.Nume.ToString()))*/
+
+            }
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult jstreeCheckedStudent(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string nivelMobilitate = null)
+        {
+
+
+            List<dynamic> jsonData = new List<dynamic>();
+            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+            {
+                if (x.PersonalATM.SituatieActuala1.Denumire == "Personal" ||
+                    x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal")
+                    jsonData.Add(x.ToJSON());
+            }
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult getSelectParameters()
         {
