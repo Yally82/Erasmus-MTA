@@ -121,9 +121,9 @@ $("#jsGridp").jsGrid({
     ]
 });
  $('#jstree').on('changed.jstree', function (e, data) {
-        var i, j,r=[], tara = [],oras=[],departament=[],parteneri=[],nivelStudii=[],tipPartener=[],nivelMobilitate=[];
+        var i, j,tara = [],oras=[],departament=[],parteneri=[],nivelStudii=[],tipPartener=[],nivelMobilitate=[];
         for (i = 0, j = data.selected.length; i < j; i++) {
-            r.push(data.instance.get_node(data.instance.get_parent(data.selected[i])).text);
+
             switch(data.instance.get_node(data.instance.get_parent(data.selected[i])).text)
             {
                 case "Tara":
