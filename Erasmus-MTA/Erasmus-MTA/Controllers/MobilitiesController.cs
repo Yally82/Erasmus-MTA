@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using Erasmus_MTA.Models;
 using System.Diagnostics;
 using Erasmus_MTA.Utilities;
-
 namespace Erasmus_MTA.Controllers
 {
    
@@ -24,7 +23,6 @@ namespace Erasmus_MTA.Controllers
             else
                 if (typeString == "Outgoing")
                     type = MobilityType.Outgoing;
-           // Debug.WriteLine(type.ToString());
 
             return View();
         }
@@ -57,7 +55,8 @@ namespace Erasmus_MTA.Controllers
         }
 
 
-        public JsonResult jstreeChecked(string tara=null,string oras=null,string departament=null,string parteneri=null,string nivelStudii=null,string tipPartener=null,string nivelMobilitate=null)
+        [HttpGet]
+        public JsonResult jstreeCheckedPersonal(string tara=null,string oras=null,string departament=null,string parteneri=null,string nivelStudii=null,string tipPartener=null,string nivelMobilitate=null)
         {
 
 
@@ -81,29 +80,108 @@ namespace Erasmus_MTA.Controllers
                             sw = 1;
                             break;
                         }
-
+                    if(departament!=null)
+                        if (departament.Contains(x.DepartamenteATM.Nume) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                   
+                    if (parteneri != null)
+                        if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if(nivelStudii!= null)
+                    if(nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel)==false)
+                    {
+                        sw = 1;
+                        break;
+                    }
+                    if(tipPartener!=null)
+                    if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
+                    {
+                        sw = 1;
+                        break;
+                    }
+                    if(nivelMobilitate!=null)
+                    if (nivelMobilitate.Contains("") == false)
+                    {
+                        sw = 1;
+                        break;
+                    }
                     if (sw == 0)
                         jsonData.Add(x.ToJSON());
                 }
-            
-                /*&&oras.Contains(x.InstitutiiPartenere.Oras1.NumeEngleza.ToString())&& departament.Contains(x.DepartamentATM.ToString())&&parteneri.Contains(x.InstitutiiPartenere.Nume.ToString()))*/
 
             }
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult jstreeCheckedStudent(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string nivelMobilitate = null)
+         [HttpGet]
+        public JsonResult jstreeCheckedStudents(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string nivelMobilitate = null)
         {
 
 
             List<dynamic> jsonData = new List<dynamic>();
             foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
             {
-                if (x.PersonalATM.SituatieActuala1.Denumire == "Personal" ||
-                    x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal")
-                    jsonData.Add(x.ToJSON());
+
+                if ((x.PersonalATM.SituatieActuala1.Denumire == "Student" ||
+                    x.PersonalATM.SituatieActuala1.Denumire == "Absolvent"))
+                {
+                    int sw = 0;
+                    if (tara != null)
+                        if (tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if (oras != null)
+                        if (oras.Contains(x.InstitutiiPartenere.Oras1.Nume) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if (departament != null)
+                        if (departament.Contains(x.DepartamenteATM.Nume) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+
+                    if (parteneri != null)
+                        if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if (nivelStudii != null)
+                        if (nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if (tipPartener != null)
+                        if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if (nivelMobilitate != null)
+                        if (nivelMobilitate.Contains("") == false)
+                        {
+                            sw = 1;
+                            break;
+                        }
+                    if (sw == 0)
+                        jsonData.Add(x.ToJSON());
+                }
+
             }
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+       
         [HttpGet]
         public JsonResult getSelectParameters()
         {
@@ -114,9 +192,9 @@ namespace Erasmus_MTA.Controllers
             JsonObject departamente = new JsonObject("Departament");
             JsonObject orase = new JsonObject("Oras");
             JsonObject parteneri = new JsonObject("Parteneri");
-            JsonObject nivelStudii = new JsonObject("Nivel Studii");
-            JsonObject tipPartener = new JsonObject("Tip Partener");
-            JsonObject niveleMobilitate = new JsonObject("Nivel Mobilitate");
+            JsonObject nivelStudii = new JsonObject("NivelStudii");
+            JsonObject tipPartener = new JsonObject("TipPartener");
+            JsonObject niveleMobilitate = new JsonObject("NivelMobilitate");
 
             jsonData.Add(tari);
             jsonData.Add(orase);

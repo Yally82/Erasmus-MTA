@@ -273,7 +273,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\mobilities.jsgrid.js" />
+    <Content Include="Scripts\sb-admin-charts.min.js" />
     <Content Include="Scripts\tables.jstree.js" />
     <Content Include="Scripts\mobilities.jstree.js" />
     <Content Include="Scripts\dist\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />

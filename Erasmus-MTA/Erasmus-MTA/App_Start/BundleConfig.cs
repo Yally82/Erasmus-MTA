@@ -16,6 +16,8 @@ namespace Erasmus_MTA
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/sb-admin-charts.min.js",
+                      "~/Scripts/Chart.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jstree").Include(

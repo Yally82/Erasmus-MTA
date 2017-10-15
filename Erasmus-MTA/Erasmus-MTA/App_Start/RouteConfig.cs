@@ -39,10 +39,15 @@ namespace Erasmus_MTA
                 defaults: new { controller = "Mobilities", action = "getPersonalATMMobilities" }
              );
             routes.MapRoute(
-            name: "MobilitiesChecked",
-            url: "Mobilities/Intern/getjson/jstreeChecked",
-            defaults: new { controller = "Mobilities", action = "jstreeChecked" }
+            name: "MobilitiesCheckedPersonal",
+            url: "Mobilities/Intern/getjson/jstreeCheckedPersonal",
+            defaults: new { controller = "Mobilities", action = "jstreeCheckedPersonal" }
          );
+            routes.MapRoute(
+            name: "MobilitiesCheckedStudents",
+            url: "Mobilities/Intern/getjson/jstreeCheckedStudents",
+            defaults: new { controller = "Mobilities", action = "jstreeCheckedStudents" }
+   );
             routes.MapRoute(
                 name: "MobilitiesGetJson",
                 url: "Mobilities/Intern/getjson",

@@ -15,13 +15,25 @@ namespace Erasmus_MTA.Utilities
             //Posibilitatea schimbarii denumirilor pentru a fi compatibile
             string NumeSiPrenume = x.PersonalATM.Nume +" "+x.PersonalATM.Prenume;
             string TipMobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
+            double nrZile = (x.DataFinalMobilitate - x.DataInceputMobilitate).TotalDays;
+            int nrLuni = (x.DataFinalMobilitate.Year - x.DataInceputMobilitate.Year) * 12 + x.DataFinalMobilitate.Month - x.DataInceputMobilitate.Month;
+            string institutiePartenera = x.InstitutiiPartenere.Nume;
+            string Nivel = x.Mobilitate.NivelStudii.Nivel;
             return new
             {
                 x.ID,
                 x.DataInceputMobilitate.Year,
                 TipMobilitate,
-                x.Mobilitate.NivelStudii.Nivel,
+                Nivel,
                 NumeSiPrenume,
+                x.DataInceputMobilitate,
+                x.DataFinalMobilitate,
+                institutiePartenera,
+                x.GrantErasmusUtilizat,
+                x.PersonalATM.Nume,
+                x.PersonalATM.Prenume,
+                nrLuni,
+                nrZile
             };
         }
 
@@ -160,6 +172,7 @@ namespace Erasmus_MTA.Utilities
                 x.Descriere
             };
         }
+    
         public static dynamic ToJSON(this DetaliiMobilitatiProiect x)
         {
             return new

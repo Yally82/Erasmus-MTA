@@ -4,6 +4,7 @@ $(function () {
 
     $('#jstree')
         .jstree({
+       
         'plugins': ["wholerow", "checkbox"],
         'core': {
             'data': { 
