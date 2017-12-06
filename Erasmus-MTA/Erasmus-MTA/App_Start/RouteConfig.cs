@@ -53,6 +53,11 @@ namespace Erasmus_MTA
                 url: "Mobilities/Intern/getjson",
                 defaults: new { controller = "Mobilities", action = "getSelectParameters" }
              );
+            routes.MapRoute(
+                name: "Login",
+                url: "login",
+                defaults: new { controller = "Home", action = "login" }
+             );
 
 
 
@@ -60,7 +65,7 @@ namespace Erasmus_MTA
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

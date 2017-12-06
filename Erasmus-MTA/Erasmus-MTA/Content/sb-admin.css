@@ -55,6 +55,8 @@ body {
     float: left;
 }
 
+
+
 .top-nav>li>a {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -139,6 +141,12 @@ ul.alert-dropdown {
     .side-nav li a:focus {
         outline: none;
         background-color: transparent !important;
+    }
+
+    #logout {
+        position: fixed;
+        right: 0px;
+        top: 0px;
     }
 }
 
