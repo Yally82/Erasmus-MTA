@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace Erasmus_MTA.Utilities
 {
@@ -69,5 +71,23 @@ namespace Erasmus_MTA.Utilities
         public bool opened;
     }
 
+    public static class HashGenerator
+    {
+        public static string getHash(string input)
+        {
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var sb = new StringBuilder(hash.Length * 2);
 
+                foreach (byte b in hash)
+                {
+                    // can be "x2" if you want lowercase
+                    sb.Append(b.ToString("X2"));
+                }
+
+                return sb.ToString();
+            }
+        }
+    }
 }

@@ -176,7 +176,15 @@
                 </li>
             </ul>
          </li>
-        <li>@Html.ActionLink("Statistici", "Index", "Statistics")</li>
+        <li id="logout">@Html.ActionLink(
+                          "Logout", 
+                          "Index", 
+                          "Home", new
+                          {
+                              logout = "logout"
+                          },
+                          null)
+        </li>
     </ul>
 
 </nav>

@@ -12,6 +12,7 @@ namespace Erasmus_MTA.Models
         {
         }
 
+        public virtual DbSet<LoginUser> LoginUsers { get; set; }
         public virtual DbSet<CategorieMobilitate> CategorieMobilitate { get; set; }
         public virtual DbSet<DepartamenteATM> DepartamenteATM { get; set; }
         public virtual DbSet<DepartamentePartenere> DepartamentePartenere { get; set; }
@@ -37,6 +38,10 @@ namespace Erasmus_MTA.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<LoginUser>()
+                .Property(e => e.PasswordHash)
+                .IsFixedLength();
+        
             modelBuilder.Entity<CategorieMobilitate>()
                 .HasMany(e => e.Mobilitate)
                 .WithRequired(e => e.CategorieMobilitate)

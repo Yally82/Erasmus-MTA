@@ -17,11 +17,21 @@ namespace Erasmus_MTA.Controllers
 
         public ActionResult Index()
         {
+            // Security
+            if (Session["Username"] == null)
+            {
+                Response.Clear();
+                Response.Write("Access Denied");
+                Response.StatusCode = 401;
+                Response.End();
+                return View();
+            }
+
             string typeString = HttpContext.Request.Params.Get("type");
-            if (typeString == "Incoming")
+            if (typeString.CompareTo("Incoming") == 0)
                 type = MobilityType.Incoming;
             else
-                if (typeString == "Outgoing")
+                if (typeString.CompareTo("Outgoing") == 0)
                     type = MobilityType.Outgoing;
 
             return View();

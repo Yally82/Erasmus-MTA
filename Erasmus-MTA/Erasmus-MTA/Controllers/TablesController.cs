@@ -19,6 +19,16 @@ namespace Erasmus_MTA.Controllers
 
         public ActionResult Index()
         {
+            // Security
+            if (Session["Username"] == null)
+            {
+                Response.Clear();
+                Response.Write("Access Denied");
+                Response.StatusCode = 401;
+                Response.End();
+                return View();
+            }
+
             ViewBag.Table =  HttpContext.Request.Params.Get("table");
             return View();
         }
@@ -140,7 +150,7 @@ namespace Erasmus_MTA.Controllers
 
             return Json(original.ToJSON(), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult updateTara(int id, Oras edited)
+        public JsonResult updateOras(int id, Oras edited)
         {
             Oras original = database.Oras.Find(id);
             if (original == null)
