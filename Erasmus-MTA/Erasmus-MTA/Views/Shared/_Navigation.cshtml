@@ -15,34 +15,6 @@
     <ul class="nav collapse  navbar-collapse navbar-nav navbar-ex1-collapse">
         <li class="active">@Html.ActionLink("Home page", "Login", "Home")</li>
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mobilitati incoming <span class="caret"></span></a>
-
-            <ul class="dropdown-menu">
-                <li>
-                    @Html.ActionLink(
-                           "Vizualizare mobilitati",
-                           "Index",
-                           "Mobilities",
-                           new
-                           {
-                               type = Erasmus_MTA.Utilities.MobilityType.Incoming
-                           },
-                           null)
-                </li>
-                <li>
-                    @Html.ActionLink(
-                            "Participanti",
-                            "Index",
-                            "Person",
-                            new
-                            {
-                                type =  Erasmus_MTA.Utilities.MobilityType.Incoming
-                            },
-                            null)
-                </li>
-            </ul>
-        </li>
-        <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mobilitati outcoming <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
@@ -71,7 +43,35 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vizualizare date <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mobilitati incoming <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+                <li>
+                    @Html.ActionLink(
+                           "Vizualizare mobilitati",
+                           "Index",
+                           "Mobilities",
+                           new
+                           {
+                               type = Erasmus_MTA.Utilities.MobilityType.Incoming
+                           },
+                           null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Participanti",
+                            "Index",
+                            "Person",
+                            new
+                            {
+                                type = Erasmus_MTA.Utilities.MobilityType.Incoming
+                            },
+                            null)
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tabele<span class="caret"></span></a>
 
             <ul class="dropdown-menu">
                 @*din linkurile de mai jos trebuie afisat intr-un header titlul din ActionLink-ul corespunzator*@
@@ -160,17 +160,6 @@
                             new
                             {
                                 table = "Participanti straini"
-                            },
-                            null)
-                </li>
-                <li>
-                    @Html.ActionLink(
-                            "Detalii mobilitati",
-                            "Index",
-                            "Tables",
-                            new
-                            {
-                                table = "Detalii mobilitati"
                             },
                             null)
                 </li>

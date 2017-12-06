@@ -13,7 +13,6 @@ namespace Erasmus_MTA.Controllers
     {
 
         private ErasmusEntities database = new ErasmusEntities();
-        private MobilityType type = 0;
 
         public ActionResult Index()
         {
@@ -27,12 +26,24 @@ namespace Erasmus_MTA.Controllers
                 return View();
             }
 
-            string typeString = HttpContext.Request.Params.Get("type");
-            if (typeString.CompareTo("Incoming") == 0)
-                type = MobilityType.Incoming;
+
+            if(Session["type"].ToString().CompareTo("noType") == 0)
+            {
+                Session["type"] = MobilityType.Outgoing;
+            }
             else
-                if (typeString.CompareTo("Outgoing") == 0)
-                    type = MobilityType.Outgoing;
+            {
+                string typeString = HttpContext.Request.Params.Get("type");
+
+                if (typeString.CompareTo(MobilityType.Incoming.ToString()) == 0)
+                {
+                    Session["type"] = MobilityType.Incoming;
+                }
+                else if (typeString.CompareTo(MobilityType.Outgoing.ToString()) == 0)
+                {
+                    Session["type"] = MobilityType.Outgoing;
+                }
+            }
 
             return View();
         }
@@ -42,25 +53,55 @@ namespace Erasmus_MTA.Controllers
         {
             List<dynamic> jsonData = new List<dynamic>();
 
-            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+            if (Session["type"].ToString().CompareTo(MobilityType.Incoming.ToString()) == 0)
             {
-                if(x.PersonalATM.SituatieActuala1.Denumire=="Student"||
-                    x.PersonalATM.SituatieActuala1.Denumire == "Absolvent")
-                    jsonData.Add(x.ToJSON());
+                //Incoming mobilities. Posible to be wrong
+                foreach (MobilitateIncoming x in database.MobilitateIncoming)
+                {
+                    if (x.ParticipantiStraini1.Functie == "Student" ||
+                        x.ParticipantiStraini1.Functie == "Absolvent")
+                        jsonData.Add(x.ToJSON());
+                }
             }
+            else if (Session["type"].ToString().CompareTo(MobilityType.Outgoing.ToString()) == 0)
+            {
+                foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+                {
+                    if (x.PersonalATM1.SituatieActuala1.Denumire == "Student" ||
+                        x.PersonalATM1.SituatieActuala1.Denumire == "Absolvent")
+                        jsonData.Add(x.ToJSON());
+                }
+            }
+
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public JsonResult getPersonalATMMobilities()
         {
+
             List<dynamic> jsonData = new List<dynamic>();
-            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+
+            if (Session["type"].ToString().CompareTo(MobilityType.Incoming.ToString()) == 0)
             {
-                if (x.PersonalATM.SituatieActuala1.Denumire == "Personal"||
-                    x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal")
-                    jsonData.Add(x.ToJSON());
+                //Incoming mobilities. Posible to be wrong
+                foreach (MobilitateIncoming x in database.MobilitateIncoming)
+                {
+                    if (x.ParticipantiStraini1.SituatieActuala1.Denumire == "Personal" ||
+                        x.ParticipantiStraini1.SituatieActuala1.Denumire == "Fost Personal")
+                        jsonData.Add(x.ToJSON());
+                }
             }
+            else if (Session["type"].ToString().CompareTo(MobilityType.Outgoing.ToString()) == 0)
+            {
+                foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+                {
+                    if (x.PersonalATM1.SituatieActuala1.Denumire == "Personal" ||
+                        x.PersonalATM1.SituatieActuala1.Denumire == "Fost Personal")
+                        jsonData.Add(x.ToJSON());
+                }
+            }
+
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
@@ -128,6 +169,7 @@ namespace Erasmus_MTA.Controllers
             }
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+
          [HttpGet]
         public JsonResult jstreeCheckedStudents(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string nivelMobilitate = null)
         {

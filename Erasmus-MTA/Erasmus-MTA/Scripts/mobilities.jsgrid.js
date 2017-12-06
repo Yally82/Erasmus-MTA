@@ -1,158 +1,158 @@
-﻿
-$("#backFromModalMobilitate").click(function () {
- $('#myModalParticipant').show();
-   $('#myModalMobilitate').hide();
+﻿$(document).ready(function () {
 
-});
+    $("#backFromModalMobilitate").click(function () {
+        $('#myModalParticipant').show();
+        $('#myModalMobilitate').hide();
 
-App = {};
+    });
 
-App.loadUrlPersonal = "/Mobilities/Intern/getjson/PersonalATMMobilities";
-App.loadUrlStudents = "/Mobilities/Intern/getjson/StudentMobilities";
+    App = {};
 
-$("#jsGrids").jsGrid({
-    width: "100%",
-    height: "750px",
+    App.loadUrlPersonal = "/Mobilities/Intern/getjson/PersonalATMMobilities";
+    App.loadUrlStudents = "/Mobilities/Intern/getjson/StudentMobilities";
 
-    autoload: true,
-    filtering: true,
-    inserting: true,
-    selecting: true,
-    editing: true,
-    sorting: true,
-    paging: true,
-    pageSize: 15,
+    $("#jsGrids").jsGrid({
+        width: "100%",
+        height: "750px",
+
+        autoload: true,
+        filtering: true,
+        inserting: true,
+        selecting: true,
+        editing: true,
+        sorting: true,
+        paging: true,
+        pageSize: 15,
 
 
-    deleteConfirm: "Do you really want to delete the client?",
+        deleteConfirm: "Do you really want to delete the client?",
 
-    controller: {
-        loadData: function (filter) {
-            var data = $.Deferred();
-            $.ajax({
-                type: "GET",
-                contentType: "application/json",
-                url: App.loadUrlStudents
-            }).done(function (response) {
-                data.resolve(response);
-            });
-            return data.promise();
-        }
-    },
-
-    fields: [
-        { name: "ID", type: "number", width: 70, validate: "required" },
-        { name: "Year", type: "number", width: 70, validate: "required" },
-        { name: "TipMobilitate", type: "text" },
-        { name: "Nivel", type: "text"},
-        { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
-        {
-            type: "control", width: 150,
-            itemTemplate: function (value, item) {
-                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-
-                var $customButton = $("<button>")
-                    .text("Detalii")
-
-                    .click(function (e) {
-                        //$('#myModalParticipant').hide();
-                        $('#myModal').modal('show');
-                        $('#myModalMobilitate').show();
-                        populate(item);
-                        e.stopPropagation();
-                    });
-
-                return $result.add($customButton);
+        controller: {
+            loadData: function (filter) {
+                var data = $.Deferred();
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: App.loadUrlStudents
+                }).done(function (response) {
+                    data.resolve(response);
+                });
+                return data.promise();
             }
-        }
-    ]
-});
+        },
 
-
-function GetDate(tdate) {
-    str = tdate.replace(/\D/g, "");
-    d = new Date(parseInt(str));
-
-    year = d.getFullYear();
-    month = pad(d.getMonth() + 1);
-    day = pad(d.getDate());
-    //hour = pad(d.getHours());
-    //minutes = pad(d.getMinutes());
-
-    finalDate = year + "-" + month + "-" + day;
-    function pad(num) {
-        num = "0" + num;
-        return num.slice(-2);
-    }
-    return finalDate;
-}
-
-$("#jsGridp").jsGrid({
-    width: "100%",
-    height: "750px",
-
-    autoload: true,
-    filtering: true,
-    inserting: true,
-    selecting: true,
-    editing: true,
-    sorting: true,
-    paging: true,
-    pageSize: 15,
-
-
-
-    deleteconfirm: "do you really want to delete the client?",
-    controller: {
-        loadData: function (filter) {
-            var data = $.Deferred();
-            $.ajax({
-                type: "GET",
-                contentType: "application/json",
-                url:App.loadUrlPersonal
-            }).done(function (response) {
-                data.resolve(response);
-            });
-            return data.promise();
-        }
-    },
-
-
-    fields: [
-        { name: "ID", type: "number", width: 70, validate: "required" },
-        { name: "Year", type: "number", width: 70, validate: "required" },
-        { name: "TipMobilitate", type: "text" },
-        {name: "Nivel",type:",text", width: 70, validate: "required" },
-        { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
-        {
-             type: "control", width: 150,
-             itemTemplate: function (value, item) {
-                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-
-                 var $customButton = $("<button>")
-                     .text("Detalii")
-
-                     .click(function (e) {
-                         //$('#myModalMobilitate').hide();
-                         $('#myModal').modal('show');
-                         $('#myModalParticipant').show();
-                         populate(item);
-                         e.stopPropagation();
-                     });
-
-                 return $result.add($customButton);
-             }
-         }
-    ]
-});
-$('#jstree').bind('changed.jstree', function (e, data) {
-     var i, j, tara = [], oras = [], departament = [], parteneri = [], nivelStudii = [], tipPartener = [], nivelMobilitate = [];
-  
-     var checked = $('#jstree').jstree("get_checked");
-        for (i = 0, j = checked.length; i < j; i++) {
-         
-            switch(data.instance.get_node(data.instance.get_parent(checked[i])).text)
+        fields: [
+            { name: "ID", type: "number", width: 70, validate: "required" },
+            { name: "Year", type: "number", width: 70, validate: "required" },
+            { name: "TipMobilitate", type: "text" },
+            { name: "Nivel", type: "text" },
+            { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
             {
+                type: "control", width: 150,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+
+                    var $customButton = $("<button>")
+                        .text("Detalii")
+
+                        .click(function (e) {
+                            //$('#myModalParticipant').hide();
+                            $('#myModal').modal('show');
+                            $('#myModalMobilitate').show();
+                            populate(item);
+                            e.stopPropagation();
+                        });
+
+                    return $result.add($customButton);
+                }
+            }
+        ]
+    });
+
+
+    function GetDate(tdate) {
+        str = tdate.replace(/\D/g, "");
+        d = new Date(parseInt(str));
+
+        year = d.getFullYear();
+        month = pad(d.getMonth() + 1);
+        day = pad(d.getDate());
+        //hour = pad(d.getHours());
+        //minutes = pad(d.getMinutes());
+
+        finalDate = year + "-" + month + "-" + day;
+        function pad(num) {
+            num = "0" + num;
+            return num.slice(-2);
+        }
+        return finalDate;
+    }
+
+    $("#jsGridp").jsGrid({
+        width: "100%",
+        height: "750px",
+
+        autoload: true,
+        filtering: true,
+        inserting: true,
+        selecting: true,
+        editing: true,
+        sorting: true,
+        paging: true,
+        pageSize: 15,
+
+
+
+        deleteconfirm: "do you really want to delete the client?",
+        controller: {
+            loadData: function (filter) {
+                var data = $.Deferred();
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: App.loadUrlPersonal
+                }).done(function (response) {
+                    data.resolve(response);
+                });
+                return data.promise();
+            }
+        },
+
+
+        fields: [
+            { name: "ID", type: "number", width: 70, validate: "required" },
+            { name: "Year", type: "number", width: 70, validate: "required" },
+            { name: "TipMobilitate", type: "text" },
+            { name: "Nivel", type: ",text", width: 70, validate: "required" },
+            { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
+            {
+                type: "control", width: 150,
+                itemTemplate: function (value, item) {
+                    var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+
+                    var $customButton = $("<button>")
+                        .text("Detalii")
+
+                        .click(function (e) {
+                            //$('#myModalMobilitate').hide();
+                            $('#myModal').modal('show');
+                            $('#myModalParticipant').show();
+                            populate(item);
+                            e.stopPropagation();
+                        });
+
+                    return $result.add($customButton);
+                }
+            }
+        ]
+    });
+    $('#jstree').bind('changed.jstree', function (e, data) {
+        var i, j, tara = [], oras = [], departament = [], parteneri = [], nivelStudii = [], tipPartener = [], nivelMobilitate = [];
+
+        var checked = $('#jstree').jstree("get_checked");
+        for (i = 0, j = checked.length; i < j; i++) {
+
+            switch (data.instance.get_node(data.instance.get_parent(checked[i])).text) {
                 case "Tara":
                     {
                         tara.push(data.instance.get_node(checked[i]).text);
@@ -194,7 +194,7 @@ $('#jstree').bind('changed.jstree', function (e, data) {
                     }
             }
         }
-      
+
         if (tara.length > 0 || oras.length > 0 || departament.length > 0 || parteneri.length > 0 || nivelStudii.length > 0 || tipPartener.length > 0 || nivelMobilitate.le > 0) {
             App.loadUrlPersonal = "/Mobilities/Intern/getjson/jstreeCheckedPersonal";
             App.loadUrlPersonal = App.loadUrlPersonal.concat("?");
@@ -251,20 +251,21 @@ $('#jstree').bind('changed.jstree', function (e, data) {
         }
         $("#jsGridp").jsGrid("loadData");
         $("#jsGrids").jsGrid("loadData");
-    })
+    });
 
 
-function populate(item) {
-    $('[name=nume]', '#myModalMobilitate').val(item.Nume);
-    $('[name=prenume]', '#myModalMobilitate').val(item.Prenume);
-    $('[name=anMobilitate]', '#myModalMobilitate').val(item.Year);
-    $('[name=tipMobilitate]', '#myModalMobilitate').val(item.TipMobilitate);
-    $('[name=institutiaGazda]', '#myModalMobilitate').val(item.institutiePartenera);
-    $('[name=dataInceput]', '#myModalMobilitate').val(GetDate(item.DataInceputMobilitate));
-    $('[name=dataFinal]', '#myModalMobilitate').val(GetDate(item.DataFinalMobilitate));
-    $('[name=luniMobilitate]', '#myModalMobilitate').val(item.nrLuni);
-    $('[name=zileMobilitate]', '#myModalMobilitate').val(item.nrZile);
-    $('[name=grantMobilitate]', '#myModalMobilitate').val(item.GrantErasmusUtilizat);
-    $('[name=nivelMobilitate]', '#myModalMobilitate').val(item.Nivel);
-   
-}
+    function populate(item) {
+        $('[name=nume]', '#myModalMobilitate').val(item.Nume);
+        $('[name=prenume]', '#myModalMobilitate').val(item.Prenume);
+        $('[name=anMobilitate]', '#myModalMobilitate').val(item.Year);
+        $('[name=tipMobilitate]', '#myModalMobilitate').val(item.TipMobilitate);
+        $('[name=institutiaGazda]', '#myModalMobilitate').val(item.institutiePartenera);
+        $('[name=dataInceput]', '#myModalMobilitate').val(GetDate(item.DataInceputMobilitate));
+        $('[name=dataFinal]', '#myModalMobilitate').val(GetDate(item.DataFinalMobilitate));
+        $('[name=luniMobilitate]', '#myModalMobilitate').val(item.nrLuni);
+        $('[name=zileMobilitate]', '#myModalMobilitate').val(item.nrZile);
+        $('[name=grantMobilitate]', '#myModalMobilitate').val(item.GrantErasmusUtilizat);
+        $('[name=nivelMobilitate]', '#myModalMobilitate').val(item.Nivel);
+
+    }
+});

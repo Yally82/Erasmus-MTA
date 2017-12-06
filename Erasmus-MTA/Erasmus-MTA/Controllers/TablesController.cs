@@ -77,6 +77,18 @@ namespace Erasmus_MTA.Controllers
         }
 
 
+        public JsonResult insertOutgoingMobility(MobilitateOutgoing x)
+        {
+            database.MobilitateOutgoing.Add(x);
+            database.SaveChanges();
+            return Json(x.ToJSON(), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult insertIncomingMobility(MobilitateIncoming x)
+        {
+            database.MobilitateIncoming.Add(x);
+            database.SaveChanges();
+            return Json(x.ToJSON(), JsonRequestBehavior.AllowGet);
+        }
         public JsonResult insertTara(Tara x)
         {
             database.Tara.Add(x);
@@ -122,12 +134,6 @@ namespace Erasmus_MTA.Controllers
         public JsonResult insertParticipantiStraini(ParticipantiStraini x)
         {
             database.ParticipantiStraini.Add(x);
-            database.SaveChanges();
-            return Json(x.ToJSON(), JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult insertDetaliiMobilitatiProiect(DetaliiMobilitatiProiect x)
-        {
-            database.DetaliiMobilitatiProiect.Add(x);
             database.SaveChanges();
             return Json(x.ToJSON(), JsonRequestBehavior.AllowGet);
         }
@@ -290,19 +296,7 @@ namespace Erasmus_MTA.Controllers
 
             return Json(original.ToJSON(), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult updateDetaliiMobilitatiProiect(int id, DetaliiMobilitatiProiect edited)
-        {
-            DetaliiMobilitatiProiect original = database.DetaliiMobilitatiProiect.Find(id);
-            if (original == null)
-                return null;
 
-          //De completat
-
-            database.Entry(original).State = System.Data.Entity.EntityState.Modified;
-            database.SaveChanges();
-
-            return Json(original.ToJSON(), JsonRequestBehavior.AllowGet);
-        }
         public dynamic getContainer(string type)
         {
             switch (type)
@@ -323,8 +317,12 @@ namespace Erasmus_MTA.Controllers
                     return database.DepartamenteATM;
                 case "DepartamentePartenere":
                     return database.DepartamentePartenere;
-                case "DetaliiMobilitatiProiect":
-                    return database.DetaliiMobilitatiProiect;
+                case "MobilitateOutgoing":
+                    return database.MobilitateOutgoing;
+                case "MobilitateIncoming":
+                    return database.MobilitateIncoming;
+                case "ProiecteMobilitati":
+                    return database.ProiecteMobilitati;
                 default:
                     return null;
             }

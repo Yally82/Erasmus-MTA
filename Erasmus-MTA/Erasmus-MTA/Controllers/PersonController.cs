@@ -11,7 +11,6 @@ namespace Erasmus_MTA.Controllers
     public class PersonController : Controller
     {
         private ErasmusEntities database = new ErasmusEntities();
-        private MobilityType type = 0;
 
         // GET: Personal
         public ActionResult Index()
@@ -27,20 +26,53 @@ namespace Erasmus_MTA.Controllers
             }
 
             string typeString = HttpContext.Request.Params.Get("type");
-            if (typeString == "Incoming")
-                type = MobilityType.Incoming;
-            else
-                if (typeString == "Outgoing")
-                type = MobilityType.Outgoing;
+
+            if (typeString.CompareTo(MobilityType.Incoming.ToString()) == 0)
+            {
+                Session["type"] = MobilityType.Incoming;
+            }
+            else if (typeString.CompareTo(MobilityType.Outgoing.ToString()) == 0)
+            {
+                Session["type"] = MobilityType.Outgoing;
+            }
             return View();
         }
 
-        //Robert: Get JSON Person. Completare: aici cu for..+Utilities/ToJSON+script cu campuri
+       
         [HttpGet]
         public JsonResult getJsonPerson()
         {
             List<dynamic> jsonData = new List<dynamic>();
-           
+
+            if (Session["type"].ToString().CompareTo(MobilityType.Incoming.ToString())==0)
+            {
+                foreach (ParticipantiStraini x in database.ParticipantiStraini)
+                {
+                    foreach (MobilitateIncoming y in database.MobilitateIncoming)
+                    {
+                        if (y.ParticipantiStraini1.ID == x.ID)
+                        {
+                            jsonData.Add(x.ToJSON());
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (Session["type"].ToString().CompareTo(MobilityType.Outgoing.ToString()) == 0)
+            {
+                foreach (PersonalATM x in database.PersonalATM)
+                {
+                    foreach (MobilitateOutgoing y in database.MobilitateOutgoing)
+                    {
+                        if (y.PersonalATM1.ID == x.ID)
+                        {
+                            jsonData.Add(x.ToJSON());
+                            break;
+                        }
+                    }
+                }
+            }
+
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
     }

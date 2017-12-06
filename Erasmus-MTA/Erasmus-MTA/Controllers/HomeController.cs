@@ -56,6 +56,10 @@ namespace Erasmus_MTA.Controllers
                         if (hash.CompareTo(x.PasswordHash)==0)
                         {
                             Session["Username"] = x.Name;
+                            Session["type"] = "noType";
+                            var controller = DependencyResolver.Current.GetService<MobilitiesController>();
+                            controller.ControllerContext = new ControllerContext(this.Request.RequestContext, controller);
+                            controller.Index();
                             return View("~/Views/Mobilities/Index.cshtml");
                         }
                     }

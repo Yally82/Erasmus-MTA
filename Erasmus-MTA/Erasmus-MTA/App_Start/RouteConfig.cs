@@ -14,11 +14,6 @@ namespace Erasmus_MTA
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-
-
-
-
             /////////////////////////////////////////////////////////////////////////////////
             routes.MapRoute(
                 name: "Tables",
@@ -28,6 +23,12 @@ namespace Erasmus_MTA
 
 
             /////////////////////////////////////////////////////////////////////////////////
+            routes.MapRoute(
+                name: "PersonGetJsonStudent",
+                url: "Person/Intern/getjson",
+                defaults: new { controller = "Person", action = "getJsonPerson" }
+             );
+
             routes.MapRoute(
                 name: "MobilitiesGetJsonStudent",
                 url: "Mobilities/Intern/getjson/StudentMobilities",
@@ -58,7 +59,6 @@ namespace Erasmus_MTA
                 url: "login",
                 defaults: new { controller = "Home", action = "login" }
              );
-
 
 
             /////////////////////////////////////////////////////////////////////////////////

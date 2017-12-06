@@ -10,6 +10,64 @@ namespace Erasmus_MTA.Utilities
 {
     public static class JsonExtentionMethods
     {
+        public static dynamic ToJSON(this ProiecteMobilitati x)
+        {
+            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
+           
+            return new
+            {
+                x.ID,
+               x.Descriere
+            };
+        }
+
+        public static dynamic ToJSONID(this MobilitateOutgoing x)
+        {
+            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
+
+            return new
+            {
+                x.ID,
+                x.ProiectMobilitate,
+                x.ParticipantATM,
+                x.DepartamentATM,
+                x.PersoanaResponsabilaATM,
+                x.InstitutiePartenera,
+                x.DepartamentPartener,
+                x.PersoanaStrainaContact,
+                x.TipMobilitati,
+                x.DomeniuMobilitate,
+                x.DataInceputMobilitate,
+                x.DataFinalMobilitate,
+                x.GrantErasmusUtilizat,
+                x.NrZileMobilitate,
+                x.NrLuniMobilitate,
+                x.Descriere
+            };
+        }
+
+        public static dynamic ToJSONID(this MobilitateIncoming x)
+        {
+            return new
+            {
+                x.ID,
+                x.ProiectMobilitate,
+                x.ParticipantStrain,
+                x.InstitutiePartenera,
+                x.DepartamentPartener,
+                x.PersoanaStrainaContact,
+                x.DepartamentATM,
+                x.PersoanaResponsabilaATM,
+                x.TipMobilitati,
+                x.DomeniuMobilitate,
+                x.DataInceputMobilitate,
+                x.DataFinalMobilitate,
+                x.NrZileMobilitate,
+                x.NrLuniMobilitate,
+                x.Descriere
+            };
+        }
+
         public static dynamic ToJSON(this MobilitateOutgoing x)
         {
             //Posibilitatea schimbarii denumirilor pentru a fi compatibile
@@ -30,6 +88,34 @@ namespace Erasmus_MTA.Utilities
                 x.DataFinalMobilitate,
                 institutiePartenera,
                 x.GrantErasmusUtilizat,
+                x.PersonalATM.Nume,
+                x.PersonalATM.Prenume,
+                nrLuni,
+                nrZile
+            };
+        }
+
+        public static dynamic ToJSON(this MobilitateIncoming x)
+        {
+            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
+            string NumeSiPrenume = x.PersonalATM.Nume + " " + x.PersonalATM.Prenume;
+            string TipMobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
+            double nrZile = (x.DataFinalMobilitate - x.DataInceputMobilitate).TotalDays;
+            int nrLuni = (x.DataFinalMobilitate.Year - x.DataInceputMobilitate.Year) * 12 + x.DataFinalMobilitate.Month - x.DataInceputMobilitate.Month;
+            string institutiePartenera = x.InstitutiiPartenere.Nume;
+            string Nivel = x.Mobilitate.NivelStudii.Nivel;
+            string dummy = "NULL";
+            return new
+            {
+                x.ID,
+                x.DataInceputMobilitate.Year,
+                TipMobilitate,
+                Nivel,
+                NumeSiPrenume,
+                x.DataInceputMobilitate,
+                x.DataFinalMobilitate,
+                institutiePartenera,
+                dummy,
                 x.PersonalATM.Nume,
                 x.PersonalATM.Prenume,
                 nrLuni,
@@ -170,20 +256,6 @@ namespace Erasmus_MTA.Utilities
                 x.Email,
                 x.Telefon,
                 x.Descriere
-            };
-        }
-    
-        public static dynamic ToJSON(this DetaliiMobilitatiProiect x)
-        {
-            return new
-            {
-                //x.ID,
-                //x.Nume,
-                //x.Prenume,
-                //x.Functie,
-                //x.Email,
-                //x.Telefon,
-                //x.Descriere
             };
         }
     }
