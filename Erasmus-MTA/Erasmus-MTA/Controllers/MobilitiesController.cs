@@ -196,6 +196,8 @@ namespace Erasmus_MTA.Controllers
             JsonObject tipPartener = new JsonObject("TipPartener");
             JsonObject niveleMobilitate = new JsonObject("NivelMobilitate");
 
+
+
             jsonData.Add(tari);
             jsonData.Add(orase);
             jsonData.Add(departamente);
