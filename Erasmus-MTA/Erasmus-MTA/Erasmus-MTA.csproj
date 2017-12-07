@@ -159,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\An.cs" />
     <Compile Include="Models\CategorieMobilitate.cs" />
     <Compile Include="Models\DepartamenteATM.cs" />
     <Compile Include="Models\DepartamentePartenere.cs" />

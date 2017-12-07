@@ -224,12 +224,13 @@ namespace Erasmus_MTA.Utilities
             string Departament = x.DepartamenteATM.Nume;
             string SituatieActuala = x.SituatieActuala1.Denumire;
             string SituatieErasmus = x.SituatieErasmus1.Denumire;
+            string DataNasterii = x.DataNasterii.ToShortDateString();
             return new
             {
                 x.ID,
                 x.Nume,
                 x.Prenume,
-                x.DataNasterii,
+                DataNasterii,
                 Departament,
                 SituatieActuala,
                 SituatieErasmus,
@@ -252,7 +253,6 @@ namespace Erasmus_MTA.Utilities
                 Departament,
                 SituatieActuala,
                 SituatieErasmus,
-                x.Functie,
                 x.Email,
                 x.Telefon,
                 x.Descriere

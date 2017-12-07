@@ -35,7 +35,7 @@ namespace Erasmus_MTA.Models
         public virtual DbSet<Tara> Tara { get; set; }
         public virtual DbSet<TipMobilitate> TipMobilitate { get; set; }
         public virtual DbSet<TipPartener> TipPartener { get; set; }
-
+        public virtual DbSet<An> An { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LoginUser>()
@@ -194,6 +194,9 @@ namespace Erasmus_MTA.Models
                 .WithRequired(e => e.ParticipantiStraini)
                 .HasForeignKey(e => e.ParticipantStrain)
                 .WillCascadeOnDelete(false);
+
+           
+
 
             modelBuilder.Entity<ParticipantiStraini>()
                 .HasMany(e => e.MobilitateIncoming1)

@@ -13,7 +13,7 @@
 
     $("#jsGrids").jsGrid({
         width: "100%",
-        height: "750px",
+        height: "auto",
 
         autoload: true,
         filtering: true,
@@ -90,7 +90,7 @@
 
     $("#jsGridp").jsGrid({
         width: "100%",
-        height: "750px",
+        height: "auto",
 
         autoload: true,
         filtering: true,
@@ -147,7 +147,7 @@
         ]
     });
     $('#jstree').bind('changed.jstree', function (e, data) {
-        var i, j, tara = [], oras = [], departament = [], parteneri = [], nivelStudii = [], tipPartener = [], nivelMobilitate = [];
+        var i, j, tara = [], oras = [], departament = [], parteneri = [], nivelStudii = [], tipPartener = [], tipMobilitate = [], ani = [];
 
         var checked = $('#jstree').jstree("get_checked");
         for (i = 0, j = checked.length; i < j; i++) {
@@ -183,9 +183,14 @@
                         tipPartener.push(data.instance.get_node(data.selected[i]).text);
                         break;
                     }
-                case "NivelMobilitate":
+                case "CategorieMobilitate":
                     {
-                        nivelMobilitate.push(data.instance.get_node(data.selected[i]).text);
+                        tipMobilitate.push(data.instance.get_node(data.selected[i]).text);
+                        break;
+                    }
+                case "An":
+                    {
+                        ani.push(data.instance.get_node(data.selected[i]).text);
                         break;
                     }
                 default:
@@ -195,7 +200,7 @@
             }
         }
 
-        if (tara.length > 0 || oras.length > 0 || departament.length > 0 || parteneri.length > 0 || nivelStudii.length > 0 || tipPartener.length > 0 || nivelMobilitate.le > 0) {
+        if (tara.length > 0 || oras.length > 0 || departament.length > 0 || parteneri.length > 0 || nivelStudii.length > 0 || tipPartener.length > 0 || tipMobilitate.length > 0 || ani.length > 0) {
             App.loadUrlPersonal = "/Mobilities/Intern/getjson/jstreeCheckedPersonal";
             App.loadUrlPersonal = App.loadUrlPersonal.concat("?");
             App.loadUrlStudents = "/Mobilities/Intern/getjson/jstreeCheckedStudents";
@@ -236,10 +241,16 @@
                 App.loadUrlStudents = App.loadUrlStudents.concat("&tipPartener=").concat(tipPartener);
                 App.loadUrlStudents = App.loadUrlStudents.concat("&");
             }
-            if (nivelMobilitate.length > 0) {
-                App.loadUrlPersonal = App.loadUrlPersonal.concat("&nivelMobilitate=").concat(nivelMobilitate);
+            if (tipMobilitate.length > 0) {
+                App.loadUrlPersonal = App.loadUrlPersonal.concat("&tipMobilitate=").concat(tipMobilitate);
                 App.loadUrlPersonal = App.loadUrlPersonal.concat("&");
-                App.loadUrlStudents = App.loadUrlStudents.concat("&nivelMobilitate=").concat(nivelMobilitate);
+                App.loadUrlStudents = App.loadUrlStudents.concat("&tipMobilitate=").concat(tipMobilitate);
+                App.loadUrlStudents = App.loadUrlStudents.concat("&");
+            }
+            if (ani.length > 0) {
+                App.loadUrlPersonal = App.loadUrlPersonal.concat("&ani=").concat(ani);
+                App.loadUrlPersonal = App.loadUrlPersonal.concat("&");
+                App.loadUrlStudents = App.loadUrlStudents.concat("&ani=").concat(ani);
                 App.loadUrlStudents = App.loadUrlStudents.concat("&");
             }
 

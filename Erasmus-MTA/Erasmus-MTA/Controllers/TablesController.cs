@@ -286,7 +286,6 @@ namespace Erasmus_MTA.Controllers
             original.DepartamentPartner = edited.DepartamentPartner;
             original.SituatieActuala = edited.SituatieActuala;
             original.SituatieErasmus = edited.SituatieErasmus;
-            original.Functie = edited.Functie;
             original.Email = edited.Email;
             original.Telefon = edited.Telefon;
             original.Descriere = edited.Descriere;

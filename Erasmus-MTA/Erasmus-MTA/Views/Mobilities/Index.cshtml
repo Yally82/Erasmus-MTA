@@ -10,107 +10,100 @@
 
 
 <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid" style="height:900px;">
+            
 
-                <div class="col-lg-6">
+                
                     <h2>Studenti</h2>
                     <div id="jsGrids"></div>
-                </div>
-                <div class="col-lg-6">
+             
                     <h2>Profesori</h2>
                     <div id="jsGridp"></div>
-                </div>
-            </div>
+                
+            
 
         </div>
 
 
 
         <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog" style="width:45%;">
+            <div class="modal-dialog" style="max-width:45%;">
                 <div class="modal-content" id="myModalMobilitate">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Detalii mobilitate</h4>
                     </div>
-                    <div class="modal-body">
-                        <form method="post" url="" class="form-horizontal">
+                    <div class="modal-body"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <form class="form-horizontal">
                             <div class="form-group">
 
-                                <label class="control-label col-sm-3" for="email">Nume:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="nume" >
-                                </div>
-                                <div class="col-sm-1"></div>
-                                <label class="control-label col-sm-2" for="email" >Prenume:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="prenume">
-                                </div>
+                                <label>Nume:</label>
+                               
+                                    <input type="text" readonly class="form-control" name="nume" >
+                             
+                                
+                                <label>Prenume:</label>
+                            
+                                    <input type="text" readonly class="form-control"  name="prenume">
+                               
 
 
-                                <label class="control-label col-sm-3" for="email">Institutia gazda:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" value="Univ Bilbao" name="institutiaGazda">
-                                </div>
-                                <div class="col-sm-1"></div>
-                                <label class="control-label col-sm-2" for="email">An mobilitate:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="anMobilitate">
-                                </div>
-
-
-
-                                <label class="control-label col-sm-3" for="email">Tip mobilitate:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="tipMobilitate" >
-                                </div>
-                                <label class="control-label col-sm-3" for="email">Nivel mobilitate:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="nivelMobilitate">
-                                </div>
+                                <label>Institutia gazda:</label>
+                            
+                                    <input type="text" readonly class="form-control" value="Univ Bilbao" name="institutiaGazda">
+                          
+                         
+                                <label>An mobilitate:</label>
+                               <input type="text" readonly class="form-control"  name="anMobilitate">
+                                
 
 
 
-
-                                <label class="control-label col-sm-3" for="email">Data inceput:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" typeof="date"  name="dataInceput">
-                                </div>
-                                <div class="col-sm-1"></div>
-                                <label class="control-label col-sm-2" for="email">Data final:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" typeof="date" name="dataFinal">
-                                </div>
-
-                                <label class="control-label col-sm-3" for="email">Numar zile mobilitate:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="zileMobilitate">
-                                </div>
-                                <label class="control-label col-sm-3" for="email">Numar luni mobilitate:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="luniMobilitate">
-                                </div>
+                                <label>Tip mobilitate:</label>
+                                
+                                    <input type="text" readonly class="form-control" name="tipMobilitate" >
+                              
+                                <label >Nivel mobilitate:</label>
+                               
+                                    <input type="text" readonly class="form-control" name="nivelMobilitate">
+                           
 
 
-                                <label class="control-label col-sm-3" for="email">Grant mobilitate:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="grantMobilitate">
-                                </div>
-                                <div class="col-sm-2"></div>
-                                <br>
-                                <br>
 
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-3">
-                                    <button type="submit" class="btn btn-success">Salveaza modificarile</button>
-                                </div>
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-3">
-                                    <button type="submit" class="btn btn-danger">Sterge modificarile</button>
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
+
+                                <label>Data inceput:</label>
+                             
+                                    <input type="text" readonly class="form-control" typeof="date"  name="dataInceput">
+
+                                
+                                <label>Data final:</label>
+                             
+                                    <input type="text" readonly class="form-control" typeof="date" name="dataFinal">
+                                
+
+                                <label>Numar zile mobilitate:</label>
+                               
+                                    <input type="text" readonly class="form-control"  name="zileMobilitate">
+                                
+                                <label>Numar luni mobilitate:</label>
+                                
+                                    <input type="text" readonly class="form-control"  name="luniMobilitate">
+                               
+
+
+                                <label>Grant mobilitate:</label>
+                                
+                                    <input type="text" readonly class="form-control"  name="grantMobilitate">
+                                
+                             
+
+                                
+                                    
+                               
+                             
+                                    @*<button class="btn btn-danger">Sterge m</button>*@
+                              
+                               
                             </div>
 
 

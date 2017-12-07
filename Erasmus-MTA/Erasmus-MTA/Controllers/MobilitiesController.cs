@@ -8,7 +8,7 @@ using System.Diagnostics;
 using Erasmus_MTA.Utilities;
 namespace Erasmus_MTA.Controllers
 {
-   
+
     public class MobilitiesController : Controller
     {
 
@@ -27,7 +27,7 @@ namespace Erasmus_MTA.Controllers
             }
 
 
-            if(Session["type"].ToString().CompareTo("noType") == 0)
+            if (Session["type"].ToString().CompareTo("noType") == 0)
             {
                 Session["type"] = MobilityType.Outgoing;
             }
@@ -58,8 +58,8 @@ namespace Erasmus_MTA.Controllers
                 //Incoming mobilities. Posible to be wrong
                 foreach (MobilitateIncoming x in database.MobilitateIncoming)
                 {
-                    if (x.ParticipantiStraini1.Functie == "Student" ||
-                        x.ParticipantiStraini1.Functie == "Absolvent")
+                    if (x.ParticipantiStraini.SituatieActuala1.Denumire.CompareTo("Student") == 0 ||
+                        x.ParticipantiStraini.SituatieActuala1.Denumire.CompareTo("Absolvent") == 0)
                         jsonData.Add(x.ToJSON());
                 }
             }
@@ -87,8 +87,8 @@ namespace Erasmus_MTA.Controllers
                 //Incoming mobilities. Posible to be wrong
                 foreach (MobilitateIncoming x in database.MobilitateIncoming)
                 {
-                    if (x.ParticipantiStraini1.SituatieActuala1.Denumire == "Personal" ||
-                        x.ParticipantiStraini1.SituatieActuala1.Denumire == "Fost Personal")
+                    if (x.ParticipantiStraini.SituatieActuala1.Denumire.CompareTo("Personal") == 0 ||
+                        x.ParticipantiStraini.SituatieActuala1.Denumire.CompareTo("Fost Personal") ==0 )
                         jsonData.Add(x.ToJSON());
                 }
             }
@@ -96,8 +96,8 @@ namespace Erasmus_MTA.Controllers
             {
                 foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
                 {
-                    if (x.PersonalATM1.SituatieActuala1.Denumire == "Personal" ||
-                        x.PersonalATM1.SituatieActuala1.Denumire == "Fost Personal")
+                    if (x.PersonalATM1.SituatieActuala1.Denumire.CompareTo("Personal") == 0 ||
+                        x.PersonalATM1.SituatieActuala1.Denumire.CompareTo("Fost Personal") == 0)
                         jsonData.Add(x.ToJSON());
                 }
             }
@@ -107,133 +107,289 @@ namespace Erasmus_MTA.Controllers
 
 
         [HttpGet]
-        public JsonResult jstreeCheckedPersonal(string tara=null,string oras=null,string departament=null,string parteneri=null,string nivelStudii=null,string tipPartener=null,string nivelMobilitate=null)
+        public JsonResult jstreeCheckedPersonal(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string tipMobilitate = null, string ani = null)
         {
 
 
             List<dynamic> jsonData = new List<dynamic>();
-            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+            if (Session["type"].ToString().CompareTo(MobilityType.Incoming.ToString()) == 0)
             {
-           
-                if ((x.PersonalATM.SituatieActuala1.Denumire == "Personal" ||
-                    x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal"))
-                    {
-                    int sw = 0;
-                    if (tara!=null)
-                        if(tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza)==false)
-                        {
-                            sw=1;
-                            break;
-                        }
-                    if(oras!=null)
-                        if(oras.Contains(x.InstitutiiPartenere.Oras1.Nume)==false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if(departament!=null)
-                        if (departament.Contains(x.DepartamenteATM.Nume) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                   
-                    if (parteneri != null)
-                        if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if(nivelStudii!= null)
-                    if(nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel)==false)
-                    {
-                        sw = 1;
-                        break;
-                    }
-                    if(tipPartener!=null)
-                    if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
-                    {
-                        sw = 1;
-                        break;
-                    }
-                    if(nivelMobilitate!=null)
-                    if (nivelMobilitate.Contains("") == false)
-                    {
-                        sw = 1;
-                        break;
-                    }
-                    if (sw == 0)
-                        jsonData.Add(x.ToJSON());
-                }
-
-            }
-            return Json(jsonData, JsonRequestBehavior.AllowGet);
-        }
-
-         [HttpGet]
-        public JsonResult jstreeCheckedStudents(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string nivelMobilitate = null)
-        {
-
-
-            List<dynamic> jsonData = new List<dynamic>();
-            foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
-            {
-
-                if ((x.PersonalATM.SituatieActuala1.Denumire == "Student" ||
-                    x.PersonalATM.SituatieActuala1.Denumire == "Absolvent"))
+                foreach (MobilitateIncoming x in database.MobilitateIncoming)
                 {
-                    int sw = 0;
-                    if (tara != null)
-                        if (tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if (oras != null)
-                        if (oras.Contains(x.InstitutiiPartenere.Oras1.Nume) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if (departament != null)
-                        if (departament.Contains(x.DepartamenteATM.Nume) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
 
-                    if (parteneri != null)
-                        if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                    if ((x.ParticipantiStraini1.SituatieActuala1.Denumire == "Personal" ||
+                        x.ParticipantiStraini1.SituatieActuala1.Denumire == "Fost Personal"))
+                    {
+                        int sw = 0;
+                        if (tara != null)
+                            if (tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (oras != null)
+                            if (oras.Contains(x.InstitutiiPartenere.Oras1.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (departament != null)
+                            if (departament.Contains(x.DepartamenteATM.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+
+                        if (parteneri != null)
+                            if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (nivelStudii != null)
+                            if (nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipPartener != null)
+                            if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipMobilitate != null)
+                            if (tipMobilitate.Contains(x.Mobilitate.CategorieMobilitate.Categorie) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (ani != null)
                         {
-                            sw = 1;
-                            break;
+                            if (ani.Contains(x.DataInceputMobilitate.Year.ToString()) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
                         }
-                    if (nivelStudii != null)
-                        if (nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if (tipPartener != null)
-                        if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if (nivelMobilitate != null)
-                        if (nivelMobilitate.Contains("") == false)
-                        {
-                            sw = 1;
-                            break;
-                        }
-                    if (sw == 0)
-                        jsonData.Add(x.ToJSON());
+                        if (sw == 0)
+                            jsonData.Add(x.ToJSON());
+                    }
+
                 }
+            }
+            else
+            {
+                foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+                {
 
+                    if ((x.PersonalATM.SituatieActuala1.Denumire == "Personal" ||
+                        x.PersonalATM.SituatieActuala1.Denumire == "Fost Personal"))
+                    {
+                        int sw = 0;
+                        if (tara != null)
+                            if (tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (oras != null)
+                            if (oras.Contains(x.InstitutiiPartenere.Oras1.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (departament != null)
+                            if (departament.Contains(x.DepartamenteATM.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+
+                        if (parteneri != null)
+                            if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (nivelStudii != null)
+                            if (nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipPartener != null)
+                            if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipMobilitate != null)
+                            if (tipMobilitate.Contains(x.Mobilitate.CategorieMobilitate.Categorie) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (ani != null)
+                        {
+                            if (ani.Contains(x.DataInceputMobilitate.Year.ToString()) == false )
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        }
+                        if (sw == 0)
+                            jsonData.Add(x.ToJSON());
+                    }
+
+                }
             }
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-       
+
+        [HttpGet]
+        public JsonResult jstreeCheckedStudents(string tara = null, string oras = null, string departament = null, string parteneri = null, string nivelStudii = null, string tipPartener = null, string tipMobilitate = null, string ani = null)
+        {
+
+
+            List<dynamic> jsonData = new List<dynamic>();
+
+            if (Session["type"].ToString().CompareTo(MobilityType.Incoming.ToString()) == 0)
+            {
+                foreach (MobilitateIncoming x in database.MobilitateIncoming)
+                {
+
+                    if ((x.ParticipantiStraini1.SituatieActuala1.Denumire == "Student" ||
+                        x.ParticipantiStraini1.SituatieActuala1.Denumire == "Absolvent"))
+                    {
+                        int sw = 0;
+                        if (tara != null)
+                            if (tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (oras != null)
+                            if (oras.Contains(x.InstitutiiPartenere.Oras1.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (departament != null)
+                            if (departament.Contains(x.DepartamenteATM.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+
+                        if (parteneri != null)
+                            if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (nivelStudii != null)
+                            if (nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipPartener != null)
+                            if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipMobilitate != null)
+                            if (tipMobilitate.Contains(x.Mobilitate.CategorieMobilitate.Categorie) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (ani != null)
+                        {
+                            if (ani.Contains(x.DataInceputMobilitate.Year.ToString()) == false )
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        }
+                        if (sw == 0)
+                            jsonData.Add(x.ToJSON());
+                    }
+
+                }
+            }
+            else
+            {
+                foreach (MobilitateOutgoing x in database.MobilitateOutgoing)
+                {
+
+                    if ((x.PersonalATM.SituatieActuala1.Denumire == "Student" ||
+                        x.PersonalATM.SituatieActuala1.Denumire == "Absolvent"))
+                    {
+                        int sw = 0;
+                        if (tara != null)
+                            if (tara.Contains(x.InstitutiiPartenere.Oras1.Tara1.NumeEngleza) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (oras != null)
+                            if (oras.Contains(x.InstitutiiPartenere.Oras1.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (departament != null)
+                            if (departament.Contains(x.DepartamenteATM.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+
+                        if (parteneri != null)
+                            if (parteneri.Contains(x.InstitutiiPartenere.Nume) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (nivelStudii != null)
+                            if (nivelStudii.Contains(x.Mobilitate.NivelStudii.Nivel) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipPartener != null)
+                            if (tipPartener.Contains(x.InstitutiiPartenere.TipPartener1.Denumire) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if (tipMobilitate != null)
+                            if (tipMobilitate.Contains(x.Mobilitate.CategorieMobilitate.Categorie) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        if(ani != null)
+                            {
+                            if(ani.Contains(x.DataInceputMobilitate.Year.ToString()) == false)
+                            {
+                                sw = 1;
+                                break;
+                            }
+                        }
+                        if (sw == 0)
+                            jsonData.Add(x.ToJSON());
+                    }
+
+                }
+            }
+
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public JsonResult getSelectParameters()
         {
@@ -246,15 +402,16 @@ namespace Erasmus_MTA.Controllers
             JsonObject parteneri = new JsonObject("Parteneri");
             JsonObject nivelStudii = new JsonObject("NivelStudii");
             JsonObject tipPartener = new JsonObject("TipPartener");
-            JsonObject niveleMobilitate = new JsonObject("NivelMobilitate");
-
+            JsonObject tipMobilitate = new JsonObject("CategorieMobilitate");
+            JsonObject ani = new JsonObject("An");
             jsonData.Add(tari);
             jsonData.Add(orase);
             jsonData.Add(departamente);
             jsonData.Add(parteneri);
             jsonData.Add(nivelStudii);
             jsonData.Add(tipPartener);
-            jsonData.Add(niveleMobilitate);
+            jsonData.Add(tipMobilitate);
+            jsonData.Add(ani);
 
 
             foreach (Tara tara in database.Tara)
@@ -265,15 +422,15 @@ namespace Erasmus_MTA.Controllers
             {
                 departamente.Add(new JsonObject(dep.Nume));
             }
-            foreach(Oras oras in database.Oras)
+            foreach (Oras oras in database.Oras)
             {
                 orase.Add(new JsonObject(oras.Nume));
             }
-            foreach( TipPartener tip in database.TipPartener)
+            foreach (TipPartener tip in database.TipPartener)
             {
                 tipPartener.Add(new JsonObject(tip.Denumire));
             }
-           foreach( InstitutiiPartenere inst in database.InstitutiiPartenere)
+            foreach (InstitutiiPartenere inst in database.InstitutiiPartenere)
             {
                 parteneri.Add(new JsonObject(inst.Nume));
             }
@@ -281,11 +438,20 @@ namespace Erasmus_MTA.Controllers
             {
                 nivelStudii.Add(new JsonObject(niv.Nivel));
             }
+            tipMobilitate.Add(new JsonObject("SMS"));
+            tipMobilitate.Add(new JsonObject("SMP"));
+            tipMobilitate.Add(new JsonObject("STA"));
+            tipMobilitate.Add(new JsonObject("STT"));
+            tipMobilitate.Add(new JsonObject("SOM"));
 
+            foreach (An an in database.An)
+            {
+                ani.Add(new JsonObject(an.Valoare.ToString()));
+            }
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
     };
 
-   
+
 
 }

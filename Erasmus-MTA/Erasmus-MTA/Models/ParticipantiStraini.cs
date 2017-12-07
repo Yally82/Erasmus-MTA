@@ -32,9 +32,6 @@ namespace Erasmus_MTA.Models
         public int SituatieErasmus { get; set; }
 
         [Required]
-        public string Functie { get; set; }
-
-        [Required]
         public string Email { get; set; }
 
         public string Telefon { get; set; }

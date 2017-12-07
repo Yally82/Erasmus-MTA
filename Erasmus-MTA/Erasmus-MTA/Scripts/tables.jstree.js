@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     var m_o_part = getRemote("/Tables/getMedia/PersonalATM");
 
     function getRemote(remote_url) {
@@ -125,7 +126,7 @@
                 },
 
                 fields: [
-                    { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
+                    { name: "ID", type: "number",width: 70, validate: "required", align: "center" },
                     { name: "Nume", type: "text", width: 70, validate: "required" },
                     { name: "NumeRomana", type: "text", width: 70, validate: "required" },
                     { name: "NumeEngleza", type: "text", width: 70, validate: "required" },
