@@ -10,21 +10,8 @@ namespace Erasmus_MTA.Utilities
 {
     public static class JsonExtentionMethods
     {
-        public static dynamic ToJSON(this ProiecteMobilitati x)
+        public static dynamic ToJSON(this MobilitateOutgoing x)
         {
-            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
-           
-            return new
-            {
-                x.ID,
-               x.Descriere
-            };
-        }
-
-        public static dynamic ToJSONID(this MobilitateOutgoing x)
-        {
-            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
-
             return new
             {
                 x.ID,
@@ -46,7 +33,7 @@ namespace Erasmus_MTA.Utilities
             };
         }
 
-        public static dynamic ToJSONID(this MobilitateIncoming x)
+        public static dynamic ToJSON(this MobilitateIncoming x)
         {
             return new
             {
@@ -65,61 +52,6 @@ namespace Erasmus_MTA.Utilities
                 x.NrZileMobilitate,
                 x.NrLuniMobilitate,
                 x.Descriere
-            };
-        }
-
-        public static dynamic ToJSON(this MobilitateOutgoing x)
-        {
-            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
-            string NumeSiPrenume = x.PersonalATM.Nume +" "+x.PersonalATM.Prenume;
-            string TipMobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
-            double nrZile = (x.DataFinalMobilitate - x.DataInceputMobilitate).TotalDays;
-            int nrLuni = (x.DataFinalMobilitate.Year - x.DataInceputMobilitate.Year) * 12 + x.DataFinalMobilitate.Month - x.DataInceputMobilitate.Month;
-            string institutiePartenera = x.InstitutiiPartenere.Nume;
-            string Nivel = x.Mobilitate.NivelStudii.Nivel;
-            return new
-            {
-                x.ID,
-                x.DataInceputMobilitate.Year,
-                TipMobilitate,
-                Nivel,
-                NumeSiPrenume,
-                x.DataInceputMobilitate,
-                x.DataFinalMobilitate,
-                institutiePartenera,
-                x.GrantErasmusUtilizat,
-                x.PersonalATM.Nume,
-                x.PersonalATM.Prenume,
-                nrLuni,
-                nrZile
-            };
-        }
-
-        public static dynamic ToJSON(this MobilitateIncoming x)
-        {
-            //Posibilitatea schimbarii denumirilor pentru a fi compatibile
-            string NumeSiPrenume = x.PersonalATM.Nume + " " + x.PersonalATM.Prenume;
-            string TipMobilitate = x.Mobilitate.CategorieMobilitate.Categorie;
-            double nrZile = (x.DataFinalMobilitate - x.DataInceputMobilitate).TotalDays;
-            int nrLuni = (x.DataFinalMobilitate.Year - x.DataInceputMobilitate.Year) * 12 + x.DataFinalMobilitate.Month - x.DataInceputMobilitate.Month;
-            string institutiePartenera = x.InstitutiiPartenere.Nume;
-            string Nivel = x.Mobilitate.NivelStudii.Nivel;
-            string dummy = "NULL";
-            return new
-            {
-                x.ID,
-                x.DataInceputMobilitate.Year,
-                TipMobilitate,
-                Nivel,
-                NumeSiPrenume,
-                x.DataInceputMobilitate,
-                x.DataFinalMobilitate,
-                institutiePartenera,
-                dummy,
-                x.PersonalATM.Nume,
-                x.PersonalATM.Prenume,
-                nrLuni,
-                nrZile
             };
         }
 

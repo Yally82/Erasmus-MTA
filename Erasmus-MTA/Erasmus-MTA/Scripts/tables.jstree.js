@@ -1,14 +1,4 @@
 ﻿$(document).ready(function () {
-    var m_o_part = getRemote("/Tables/getMedia/PersonalATM");
-
-    function getRemote(remote_url) {
-        return $.ajax({
-            type: "GET",
-            url: remote_url,
-            async: false
-        });
-    }
-
     switch ($("#tipTabel").text()) {
         case "Tari":
             $("#jsGrids").jsGrid({
@@ -610,71 +600,61 @@
                 ]
             });
             break;
-        case "Mobilitati Outgoing":
-            $("#jsGrids").jsGrid({
-                width: "100%",
-                height: "750px",
+        case "MobilitateOutgoing":
+            $.ajax({
+                type: "GET",
+                url: "/Tables/getMedia/PersonalATM"
+            }).done(function (countries) {
 
-                autoload: true,
-                filtering: true,
-                inserting: true,
-                selecting: true,
-                editing: true,
-                sorting: true,
-                paging: true,
-                pageSize: 15,
+                countries.unshift({ ID: "0", Nume: "" });
+
+                $("#jsGrids").jsGrid({
+                    width: "100%",
+                    height: "750px",
+
+                    autoload: true,
+                    filtering: true,
+                    inserting: true,
+                    selecting: true,
+                    editing: true,
+                    sorting: true,
+                    paging: true,
+                    pageSize: 15,
 
 
-                deleteConfirm: "Do you really want to delete the client?",
-                controller: {
-                    loadData: function (filter) {
-                        return $.ajax({
-                            type: "GET",
-                            url: "/Tables/getMedia/MobilitateOutgoing",
-                            data: filter
-                        });
-                    },
-                    insertItem: function (item) {
-                        return $.ajax({
-                            type: "POST",
-                            url: "/Tables/insertOutgoingMobility",
-                            data: item,
-                            dataType: "json"
-                        });
-                    },
-                    deleteItem: function (item) {
-                        return $.ajax({
-                            type: "POST",
-                            url: "/Tables/deleteMedia/MobilitateOutgoing/" + item.ID
-                        });
-                    }
-                },
-
-                fields: [
-                    { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
-                    {
-                        name: "ParticipantATM", type: "select", items: getRemote("/Tables/getMedia/PersonalATM"), valueField: "ID", textField: "Nume",
-                        filterTemplate: function () {
-                            var statesField = this._grid.fields[2];
-                            var $filterControl = jsGrid.fields.select.prototype.filterTemplate.call(this);
-
-                            $filterControl.on("change", function () {
-                                var selectedCountry = parseInt($(this).val(), 10);
-                                var countryStates = $.grep(getRemote("/Tables/getMedia/PersonalATM"), function (country) {
-                                    return country.ID === selectedCountry;
-                                })[0].States;
-
-                               
+                    deleteConfirm: "Do you really want to delete the client?",
+                    controller: {
+                        loadData: function (filter) {
+                            return $.ajax({
+                                type: "GET",
+                                url: "/Tables/getMedia/MobilitateOutgoing",
+                                data: filter
                             });
-
-                            return $filterControl;
+                        },
+                        insertItem: function (item) {
+                            return $.ajax({
+                                type: "POST",
+                                url: "/Tables/insertOutgoingMobility",
+                                data: item,
+                                dataType: "json"
+                            });
+                        },
+                        deleteItem: function (item) {
+                            return $.ajax({
+                                type: "POST",
+                                url: "/Tables/deleteMedia/MobilitateOutgoing/" + item.ID
+                            });
                         }
-                    }
-                ]
-            });
+                    },
 
+                    fields: [
+                        { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
+                        { name: "ParticipantATM", type: "select", items: countries, valueField: "ID", textField: "Nume" }
+                    ]
+                });
+            });
             break;
-        case "Mobilitati Incoming":
+        case "MobilitateIncoming":
             $("#jsGrids").jsGrid({
                 width: "100%",
                 height: "750px",

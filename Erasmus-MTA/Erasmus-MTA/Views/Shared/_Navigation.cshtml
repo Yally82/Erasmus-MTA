@@ -163,6 +163,28 @@
                             },
                             null)
                 </li>
+                <li>
+                    @Html.ActionLink(
+                            "Mobilitati Outgoing",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "MobilitateOutgoing"
+                            },
+                            null)
+                </li>
+                <li>
+                    @Html.ActionLink(
+                            "Mobilitati Incoming",
+                            "Index",
+                            "Tables",
+                            new
+                            {
+                                table = "MobilitateIncoming"
+                            },
+                            null)
+                </li>
             </ul>
          </li>
         <li id="logout">@Html.ActionLink(

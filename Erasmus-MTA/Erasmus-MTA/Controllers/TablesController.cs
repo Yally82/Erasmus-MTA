@@ -140,7 +140,32 @@ namespace Erasmus_MTA.Controllers
 
 
 
+        public JsonResult updateOutgoingMobility(int id,MobilitateOutgoing x)
+        {
+            MobilitateOutgoing original = database.MobilitateOutgoing.Find(id);
+            if (original == null)
+                return null;
 
+            original = x;
+
+            database.Entry(original).State = System.Data.Entity.EntityState.Modified;
+            database.SaveChanges();
+
+            return Json(original.ToJSON(), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult updateIncomingMobility(int id, MobilitateIncoming x)
+        {
+            MobilitateIncoming original = database.MobilitateIncoming.Find(id);
+            if (original == null)
+                return null;
+
+            original = x;
+
+            database.Entry(original).State = System.Data.Entity.EntityState.Modified;
+            database.SaveChanges();
+
+            return Json(original.ToJSON(), JsonRequestBehavior.AllowGet);
+        }
         public JsonResult updateTara(int id, Tara edited)
         {
             Tara original = database.Tara.Find(id);
