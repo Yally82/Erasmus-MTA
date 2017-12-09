@@ -42,11 +42,11 @@
         },
 
         fields: [
-            { name: "ID", type: "number", width: 70, validate: "required" },
-            { name: "Year", type: "number", width: 70, validate: "required" },
+            { name: "ID", type: "number", width: 70 },
+            { name: "Year", type: "number", width: 70 },
             { name: "TipMobilitate", type: "text" },
             { name: "Nivel", type: "text" },
-            { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
+            { name: "NumeSiPrenume", type: "text", width: 150 },
             {
                 type: "control", width: 150,
                 itemTemplate: function (value, item) {
@@ -120,11 +120,11 @@
 
 
         fields: [
-            { name: "ID", type: "number", width: 70, validate: "required" },
-            { name: "Year", type: "number", width: 70, validate: "required" },
+            { name: "ID", type: "number", width: 70 },
+            { name: "Year", type: "number", width: 70 },
             { name: "TipMobilitate", type: "text" },
-            { name: "Nivel", type: ",text", width: 70, validate: "required" },
-            { name: "NumeSiPrenume", type: "text", width: 150, validate: "required" },
+            { name: "Nivel", type: ",text", width: 70 },
+            { name: "NumeSiPrenume", type: "text", width: 150 },
             {
                 type: "control", width: 150,
                 itemTemplate: function (value, item) {

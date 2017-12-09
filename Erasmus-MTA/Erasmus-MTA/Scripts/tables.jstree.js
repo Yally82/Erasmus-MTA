@@ -62,10 +62,10 @@ $(document).ready(function () {
                 },
 
                 fields: [
-                    { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
-                    { name: "Nume", type: "text", width: 70, validate: "required" },
-                    { name: "NumeRomana", type: "text", width: 70, validate: "required" },
-                    { name: "NumeEngleza", type: "text", width: 70, validate: "required" },
+                    { name: "ID", type: "number", width: 70, align: "center" },
+                    { name: "Nume", type: "text", width: 70 },
+                    { name: "NumeRomana", type: "text", width: 70 },
+                    { name: "NumeEngleza", type: "text", width: 70 },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -126,10 +126,10 @@ $(document).ready(function () {
                 },
 
                 fields: [
-                    { name: "ID", type: "number",width: 70, validate: "required", align: "center" },
-                    { name: "Nume", type: "text", width: 70, validate: "required" },
-                    { name: "NumeRomana", type: "text", width: 70, validate: "required" },
-                    { name: "NumeEngleza", type: "text", width: 70, validate: "required" },
+                    { name: "ID", type: "number",width: 70, align: "center" },
+                    { name: "Nume", type: "text", width: 70 },
+                    { name: "NumeRomana", type: "text", width: 70 },
+                    { name: "NumeEngleza", type: "text", width: 70 },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -191,15 +191,15 @@ $(document).ready(function () {
                 },
 
                 fields: [
-                    { name: "ID", type: "number", validate: "required", align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "NumeEngleza", type: "text", validate: "required" },
-                    { name: "Acronim", type: "text", validate: "required" },
-                    { name: "AdresaPostala", type: "text", validate: "required" },
-                    { name: "AdresaWeb", type: "text", validate: "required" },
-                    { name: "CodErasmus", type: "text", validate: "required" },
-                    { name: "CodPIC", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "NumeEngleza", type: "text" },
+                    { name: "Acronim", type: "text" },
+                    { name: "AdresaPostala", type: "text" },
+                    { name: "AdresaWeb", type: "text" },
+                    { name: "CodErasmus", type: "text" },
+                    { name: "CodPIC", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -261,20 +261,20 @@ $(document).ready(function () {
                     }
                 },
                 fields: [
-                    { name: "ID", type: "number", validate: "required", align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "NumeRomana", type: "text", validate: "required" },
-                    { name: "NumeEngleza", type: "text", validate: "required" },
-                    { name: "Oras", type: "text", validate: "required" },
-                    { name: "TipPartener", type: "text", validate: "required" },
-                    { name: "Acronim", type: "text", validate: "required" },
-                    { name: "AdresaPostala", type: "text", validate: "required" },
-                    { name: "AdresaWeb", type: "text", validate: "required" },
-                    { name: "CodErasmus", type: "text", validate: "required" },
-                    { name: "CodPIC", type: "text", validate: "required" },
-                    { name: "CartaErasmus", type: "text", validate: "required" },
-                    { name: "AcordErasmus", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "NumeRomana", type: "text" },
+                    { name: "NumeEngleza", type: "text" },
+                    { name: "Oras", type: "text" },
+                    { name: "TipPartener", type: "text" },
+                    { name: "Acronim", type: "text" },
+                    { name: "AdresaPostala", type: "text" },
+                    { name: "AdresaWeb", type: "text" },
+                    { name: "CodErasmus", type: "text" },
+                    { name: "CodPIC", type: "text" },
+                    { name: "CartaErasmus", type: "text" },
+                    { name: "AcordErasmus", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -335,14 +335,14 @@ $(document).ready(function () {
                     }
                 },
                 fields: [
-                    { name: "ID", type: "number", validate: "required", align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "NumeEngleza", type: "text", validate: "required" },
-                    { name: "Institutie", type: "text", validate: "required" },
-                    { name: "Acronim", type: "text", validate: "required" },
-                    { name: "AdresaPostala", type: "text", validate: "required" },
-                    { name: "AdresaWeb", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "NumeEngleza", type: "text" },
+                    { name: "Institutie", type: "text" },
+                    { name: "Acronim", type: "text" },
+                    { name: "AdresaPostala", type: "text" },
+                    { name: "AdresaWeb", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -402,15 +402,15 @@ $(document).ready(function () {
                     }
                 },
                 fields: [
-                    { name: "ID", type: "number", validate: "required", align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "NumeRomana", type: "text", validate: "required" },
-                    { name: "NumeEngleza", type: "text", validate: "required" },
-                    { name: "InstitutiePartenera", type: "text", validate: "required" },
-                    { name: "Acronim", type: "text", validate: "required" },
-                    { name: "AdresaPostala", type: "text", validate: "required" },
-                    { name: "AdresaWeb", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "NumeRomana", type: "text" },
+                    { name: "NumeEngleza", type: "text" },
+                    { name: "InstitutiePartenera", type: "text" },
+                    { name: "Acronim", type: "text" },
+                    { name: "AdresaPostala", type: "text" },
+                    { name: "AdresaWeb", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -470,17 +470,17 @@ $(document).ready(function () {
                     }
                 },
                 fields: [
-                    { name: "ID", type: "number", validate: "required", align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "Prenume", type: "text", validate: "required" },
-                    { name: "DataNasterii", type: "text", validate: "required" },
-                    { name: "Departament", type: "text", validate: "required" },
-                    { name: "SituatieActuala", type: "text", validate: "required" },
-                    { name: "SituatieErasmus", type: "text", validate: "required" },
-                    { name: "Functie", type: "text", validate: "required" },
-                    { name: "Email", type: "text", validate: "required", width: 150 },
-                    { name: "Telefon", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "Prenume", type: "text" },
+                    { name: "DataNasterii", type: "text" },
+                    { name: "Departament", type: "text" },
+                    { name: "SituatieActuala", type: "text" },
+                    { name: "SituatieErasmus", type: "text" },
+                    { name: "Functie", type: "text" },
+                    { name: "Email", type: "text", width: 150 },
+                    { name: "Telefon", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -541,16 +541,16 @@ $(document).ready(function () {
                     }
                 },
                 fields: [
-                    { name: "ID", type: "number", validate: "required", width: 50, align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "Prenume", type: "text", validate: "required" },
-                    { name: "Departament", type: "text", validate: "required" },
-                    { name: "SituatieActuala", type: "text", validate: "required" },
-                    { name: "SituatieErasmus", type: "text", validate: "required" },
-                    { name: "Functie", type: "text", validate: "required" },
-                    { name: "Email", type: "text", validate: "required", width: 150 },
-                    { name: "Telefon", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", width: 50, align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "Prenume", type: "text" },
+                    { name: "Departament", type: "text" },
+                    { name: "SituatieActuala", type: "text" },
+                    { name: "SituatieErasmus", type: "text" },
+                    { name: "Functie", type: "text" },
+                    { name: "Email", type: "text", width: 150 },
+                    { name: "Telefon", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -591,16 +591,16 @@ $(document).ready(function () {
                     }
                 },
                 fields: [
-                    { name: "ID", type: "number", validate: "required", align: "center" },
-                    { name: "Nume", type: "text", validate: "required" },
-                    { name: "Prenume", type: "text", validate: "required" },
-                    { name: "Departament", type: "text", validate: "required" },
-                    { name: "SituatieActuala", type: "text", validate: "required" },
-                    { name: "SituatieErasmus", type: "text", validate: "required" },
-                    { name: "Functie", type: "text", validate: "required" },
-                    { name: "Email", type: "text", validate: "required", width: 150 },
-                    { name: "Telefon", type: "text", validate: "required" },
-                    { name: "Descriere", type: "text", validate: "required" },
+                    { name: "ID", type: "number", align: "center" },
+                    { name: "Nume", type: "text" },
+                    { name: "Prenume", type: "text" },
+                    { name: "Departament", type: "text" },
+                    { name: "SituatieActuala", type: "text" },
+                    { name: "SituatieErasmus", type: "text" },
+                    { name: "Functie", type: "text" },
+                    { name: "Email", type: "text", width: 150 },
+                    { name: "Telefon", type: "text" },
+                    { name: "Descriere", type: "text" },
                     {
                         type: "control", width: 50,
                         itemTemplate: function (value, item) {
@@ -652,7 +652,7 @@ $(document).ready(function () {
                 },
 
                 fields: [
-                    { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
+                    { name: "ID", type: "number", width: 70, align: "center" },
                     {
                         name: "ParticipantATM", type: "select", items: getRemote("/Tables/getMedia/PersonalATM"), valueField: "ID", textField: "Nume",
                         filterTemplate: function () {
@@ -716,8 +716,8 @@ $(document).ready(function () {
                 },
 
                 fields: [
-                    { name: "ID", type: "number", width: 70, validate: "required", align: "center" },
-                    { name: "An", type: "number", width: 70, validate: "required" }
+                    { name: "ID", type: "number", width: 70, align: "center" },
+                    { name: "An", type: "number", width: 70 }
                 ]
             });
 
